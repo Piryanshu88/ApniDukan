@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const reqString = { type: String, required: true };
 
 const userSchema = mongoose.Schema({
-  firstName: String,
-  lastName: String,
+  firstName: { type: String, default: "" },
+  lastName: { type: String, default: "" },
   email: reqString,
-  gender: String,
+  gender: { type: String, default: "" },
   password: reqString,
 });
 

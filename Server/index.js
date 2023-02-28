@@ -1,11 +1,29 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+const { connect } = require("./config/db");
+const { userRouter } = require("./router/user.router");
 require("dotenv").config();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("This is the home page of HM clone ");
 });
 
-app.listen(process.env.port, () => {
-  console.log("Server running at 8080");
+app.use("/user", userRouter);
+
+app.listen(process.env.port, async () => {
+  try {
+    await connect;
+    console.log("connected to db");
+  } catch (error) {
+    console.log(error);
+  }
+  console.log("server running at 8080");
 });
