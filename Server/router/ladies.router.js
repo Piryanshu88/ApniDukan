@@ -163,6 +163,14 @@ ladiesRouter.get("/ladies", async (req, res) => {
         status: "success",
         totalCount: productlength,
       });
+    } else if (sort) {
+      const product = await LadiesModel.find().limit(limit).sort({ price: s });
+      const productlength = await LadiesModel.find().count();
+      res.status(201).json({
+        data: product,
+        status: "success",
+        totalCount: productlength,
+      });
     } else {
       const product = await LadiesModel.find().limit(limit);
       const productlength = await LadiesModel.find().count();

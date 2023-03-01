@@ -7,6 +7,7 @@ const { cartRouter } = require("./router/cart.router");
 const { menRouter } = require("./router/men.router");
 const { ladiesRouter } = require("./router/ladies.router");
 const { DividendRouter } = require("./router/dividend.router");
+const { homeRouter } = require("./router/home.router");
 require("dotenv").config();
 
 app.use(
@@ -28,6 +29,8 @@ app.use("/products", menRouter);
 app.use("/products", ladiesRouter);
 
 app.use("/products", DividendRouter);
+
+app.use("/products", homeRouter);
 
 // for all the cart Routes
 app.use("/cart", cartRouter);

@@ -1,8 +1,7 @@
 const express = require("express");
-const { DividendModel } = require("../models/product.model");
-const DividendRouter = express.Router();
-
-DividendRouter.get("/dividend", async (req, res) => {
+const { HomeModel } = require("../models/product.model");
+const homeRouter = express.Router();
+homeRouter.get("/home", async (req, res) => {
   const category = req?.query?.category;
   const page = Math.max(0, req?.query?.page || 0);
   const limit = req?.query?.limit || 15;
@@ -20,11 +19,11 @@ DividendRouter.get("/dividend", async (req, res) => {
       min_price = Number(min_price);
       max_price = Number(max_price);
       console.log(min_price, max_price);
-      const product = await DividendModel.find({
+      const product = await HomeModel.find({
         category: category,
         price: { $gte: min_price, $lte: max_price },
       }).limit(limit);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         category: category,
         price: { $gte: min_price, $lte: max_price },
       }).count();
@@ -37,10 +36,10 @@ DividendRouter.get("/dividend", async (req, res) => {
     } else if (min_price && max_price) {
       min_price = Number(min_price);
       max_price = Number(max_price);
-      const product = await DividendModel.find({
+      const product = await HomeModel.find({
         price: { $gte: min_price, $lte: max_price },
       }).limit(limit);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         price: { $gte: min_price, $lte: max_price },
       }).count();
 
@@ -51,11 +50,11 @@ DividendRouter.get("/dividend", async (req, res) => {
       });
     } else if (category && min_price) {
       min_price = Number(min_price);
-      const product = await DividendModel.find({
+      const product = await HomeModel.find({
         price: { $gte: min_price },
         category: category,
       }).limit(limit);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         price: { $gte: min_price },
       }).count();
 
@@ -66,10 +65,10 @@ DividendRouter.get("/dividend", async (req, res) => {
       });
     } else if (category && max_price) {
       max_price = Number(max_price);
-      const product = await DividendModel.find({
+      const product = await HomeModel.find({
         price: { $lte: max_price },
       }).limit(limit);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         price: { $lte: max_price },
       }).count();
 
@@ -81,10 +80,10 @@ DividendRouter.get("/dividend", async (req, res) => {
     } else if (min_price) {
       min_price = Number(min_price);
 
-      const product = await DividendModel.find({
+      const product = await HomeModel.find({
         price: { $gte: min_price },
       }).limit(limit);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         price: { $gte: min_price },
       }).count();
 
@@ -96,10 +95,10 @@ DividendRouter.get("/dividend", async (req, res) => {
     } else if (max_price) {
       min_price = Number(min_price);
       max_price = Number(max_price);
-      const product = await DividendModel.find({
+      const product = await HomeModel.find({
         price: { $lte: max_price },
       }).limit(limit);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         price: { $lte: max_price },
       }).count();
 
@@ -109,10 +108,10 @@ DividendRouter.get("/dividend", async (req, res) => {
         totalCount: productlength,
       });
     } else if (category && sort) {
-      const product = await DividendModel.find({ category: category })
+      const product = await HomeModel.find({ category: category })
         .limit(limit)
         .sort({ price: s });
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         category: category,
       }).count();
       res.status(201).json({
@@ -121,10 +120,10 @@ DividendRouter.get("/dividend", async (req, res) => {
         totalCount: productlength,
       });
     } else if (category) {
-      const product = await DividendModel.find({ category: category })
+      const product = await HomeModel.find({ category: category })
         .limit(limit)
         .skip(limit * page);
-      const productlength = await DividendModel.find({
+      const productlength = await HomeModel.find({
         category: category,
       }).count();
       res.status(201).json({
@@ -133,50 +132,48 @@ DividendRouter.get("/dividend", async (req, res) => {
         totalCount: productlength,
       });
     } else if (limit && page && sort) {
-      const product = await DividendModel.find()
+      const product = await HomeModel.find()
         .limit(limit)
         .skip(limit * page)
         .sort({ price: s });
-      const productlength = await DividendModel.find().count();
+      const productlength = await HomeModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else if (page && sort) {
-      const product = await DividendModel.find()
+      const product = await HomeModel.find()
         .limit(limit)
         .skip(limit * page)
         .sort({ price: s });
-      const productlength = await DividendModel.find().count();
+      const productlength = await HomeModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else if (page) {
-      const product = await DividendModel.find()
+      const product = await HomeModel.find()
         .limit(limit)
         .skip(limit * page);
-      const productlength = await DividendModel.find().count();
+      const productlength = await HomeModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else if (sort) {
-      const product = await DividendModel.find()
-        .limit(limit)
-        .sort({ price: s });
-      const productlength = await DividendModel.find().count();
+      const product = await HomeModel.find().limit(limit).sort({ price: s });
+      const productlength = await HomeModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else {
-      const product = await DividendModel.find().limit(limit);
-      const productlength = await DividendModel.find().count();
+      const product = await HomeModel.find().limit(limit);
+      const productlength = await HomeModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
@@ -189,10 +186,10 @@ DividendRouter.get("/dividend", async (req, res) => {
   }
 });
 
-DividendRouter.get("/dividend/:id", async (req, res) => {
+homeRouter.get("/home/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await DividendModel.find({ _id: id });
+    const product = await HomeModel.find({ _id: id });
     res.status(201).json({ data: product, status: "success" });
   } catch (error) {
     console.log(error);
@@ -200,9 +197,9 @@ DividendRouter.get("/dividend/:id", async (req, res) => {
   }
 });
 
-DividendRouter.post("/dividend/add", async (req, res) => {
+homeRouter.post("/home/add", async (req, res) => {
   try {
-    const product = new DividendModel(req.body);
+    const product = new HomeModel(req.body);
     product.save();
     res
       .status(201)
@@ -213,13 +210,10 @@ DividendRouter.post("/dividend/add", async (req, res) => {
   }
 });
 
-DividendRouter.patch("/dividend/:id", async (req, res) => {
+homeRouter.patch("/home/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await DividendModel.findByIdAndUpdate(
-      { _id: id },
-      req.body
-    );
+    const product = await HomeModel.findByIdAndUpdate({ _id: id }, req.body);
     res
       .status(201)
       .json({ message: "Data update successfully", status: "success" });
@@ -229,10 +223,10 @@ DividendRouter.patch("/dividend/:id", async (req, res) => {
   }
 });
 
-DividendRouter.delete("/dividend/:id", async (req, res) => {
+homeRouter.delete("/home/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await DividendModel.findByIdAndDelete({ _id: id });
+    const product = await HomeModel.findByIdAndDelete({ _id: id });
     res
       .status(201)
       .json({ message: "Data delete successfully", status: "success" });
@@ -243,5 +237,5 @@ DividendRouter.delete("/dividend/:id", async (req, res) => {
 });
 
 module.exports = {
-  DividendRouter,
+  homeRouter,
 };
