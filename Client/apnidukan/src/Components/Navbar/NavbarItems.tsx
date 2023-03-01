@@ -5,13 +5,20 @@ import {
   MenuButton,
   MenuList,
   useColorModeValue,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import styles from "./NavbarItems.module.css";
+
 import React from "react";
 
+interface propsItems {
+  key: string;
+  key_data: string[];
+}
 interface props {
   comp: string;
-  list: string[];
+  list: propsItems[];
 }
 export const NavbarSec = ({ comp, list }: props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -40,7 +47,26 @@ export const NavbarSec = ({ comp, list }: props) => {
         onMouseEnter={onOpen}
         onMouseLeave={onClose}
         zIndex="10000000000"
-      ></MenuList>
+        border={"none"}
+        boxShadow="none"
+        borderRadius={"0"}
+        borderBottom={"2px solid var(--text-color)"}
+      >
+        <div className={styles.nav_drop_down}>
+          {list.map((el, i) => {
+            return (
+              <Stack key={i}>
+                <Text fontWeight="500" fontSize={"16px"}>
+                  {el.key}
+                </Text>
+                {el?.key_data?.map((item) => {
+                  return <Text cursor={"pointer"}>{item}</Text>;
+                })}
+              </Stack>
+            );
+          })}
+        </div>
+      </MenuList>
     </Menu>
   );
 };
