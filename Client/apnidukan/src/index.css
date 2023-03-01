@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500&display=swap");
 
 * {
   margin: 0;
@@ -10,7 +10,8 @@
   text-decoration: none;
 }
 :root {
-  --color-bg: #1f1f38;
+  --text-color: #222222;
+  --color-bg: #faf9f8;
   --color-bg-variant: #2c2c6c;
   --color-primary: #4db5ff;
   --color-primary-variant: rgba(77, 181, 255, 0.4);
@@ -28,9 +29,10 @@ html {
 }
 body {
   margin: 0;
-  font-family: "Roboto" sans-serif;
+  font-family: "Noto+Sans" sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--color-bg);
 }
 
 code {
