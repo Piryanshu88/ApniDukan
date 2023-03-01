@@ -16,6 +16,7 @@ const productSchema = mongoose.Schema({
   outOfStockText: String,
   comingSoon: String,
   redPrice: String,
+  percentageDiscount: String,
 });
 
 const MenModel = mongoose.model("men", productSchema);
@@ -24,7 +25,9 @@ const DividendModel = mongoose.model("dividend", productSchema);
 const HomeModel = mongoose.model("home", productSchema);
 const KidModel = mongoose.model("kid", productSchema);
 const SaleModel = mongoose.model("sale", productSchema);
+const SportModel = mongoose.model("sport", productSchema);
 module.exports = {
+  SportModel,
   MenModel,
   SaleModel,
   HomeModel,
