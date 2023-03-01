@@ -122,7 +122,9 @@ productRouter.get("/mens", async (req, res) => {
         totalCount: productlength,
       });
     } else if (category) {
-      const product = await MenModel.find({ category: category }).limit(limit);
+      const product = await MenModel.find({ category: category })
+        .limit(limit)
+        .skip(limit * page);
       const productlength = await MenModel.find({
         category: category,
       }).count();
