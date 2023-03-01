@@ -43,13 +43,13 @@ export const NavbarSec = ({ comp, list }: props) => {
         {comp}
       </MenuButton>
       <MenuList
-        width={"100vh"}
         onMouseEnter={onOpen}
         onMouseLeave={onClose}
         zIndex="10000000000"
         border={"none"}
         boxShadow="none"
         borderRadius={"0"}
+        backgroundColor="var(--color-bg)"
         borderBottom={"2px solid var(--text-color)"}
       >
         <div className={styles.nav_drop_down}>

@@ -168,6 +168,48 @@ const dividend = [
     key_data: ["Party Wear", "Casual Wear", "Office Wear", "Loungewear"],
   },
 ];
+const home = [
+  {
+    key: "New Arrivals",
+    key_data: ["New Arrivals"],
+  },
+  {
+    key: "Trending Now",
+    key_data: [
+      "Home essentials",
+      "Colorburst Collection",
+      "Scented candles",
+      "Latest Trends",
+    ],
+  },
+  {
+    key: "Shop by Product",
+    key_data: [
+      "View All",
+      "Decorations",
+      "Cushions",
+      "Bed Linen",
+      "Room Fragrance",
+      "Servingware & Tableware",
+      "Cookware & Bakeware",
+      "Organize & Storage",
+      "Bath & Shower",
+      "Blankets",
+      "Curtains",
+      "Sleepwear",
+      "Giftwraps",
+      "Sale",
+    ],
+  },
+  {
+    key: "Sustainability",
+    key_data: ["Meet the maker"],
+  },
+  {
+    key: "Magazine",
+    key_data: ["Magazine"],
+  },
+];
 const sport = [
   {
     key: "Women",
@@ -403,8 +445,8 @@ export const Navbar = () => {
           <NavbarSec comp="Men" list={men} />
           <NavbarSec comp="Dividend" list={dividend} />
           <NavbarSec comp="Kids" list={baby} />
-          <NavbarSec comp="Baby" list={baby} />
-          <NavbarSec comp="H&M HOME" list={ladies} />
+          <NavbarSec comp="H&M HOME" list={home} />
+          <NavbarSec comp="Sale" list={sale} />
           <NavbarSec comp="Sport" list={sport} />
           <NavbarSec comp="Sustainability" list={ladies} />
         </div>
