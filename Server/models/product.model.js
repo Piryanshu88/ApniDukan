@@ -8,7 +8,7 @@ const productSchema = mongoose.Schema({
   favouritesTracking: String,
   favouritesSavedText: String,
   favouritesNotSavedText: String,
-  price: String,
+  price: Number,
   sellingAttribute: String,
   swatchesTotal: String,
   swatches: Array,
