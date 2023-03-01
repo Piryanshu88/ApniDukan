@@ -22,9 +22,11 @@ const MenModel = mongoose.model("men", productSchema);
 const LadiesModel = mongoose.model("ladie", productSchema);
 const DividendModel = mongoose.model("dividend", productSchema);
 const HomeModel = mongoose.model("home", productSchema);
+const KidModel = mongoose.model("kid", productSchema);
 module.exports = {
   MenModel,
   HomeModel,
+  KidModel,
   LadiesModel,
   DividendModel,
 };
