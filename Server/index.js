@@ -11,6 +11,7 @@ const { homeRouter } = require("./router/home.router");
 const { kidRouter } = require("./router/kids.router");
 const { saleRouter } = require("./router/sale.router");
 const { sportRouter } = require("./router/sports.router");
+const { authenticate } = require("./middlewares/auth.middlewares");
 require("dotenv").config();
 
 app.use(
@@ -41,7 +42,8 @@ app.use("/products", saleRouter);
 
 app.use("/products", sportRouter);
 // for all the cart Routes
-app.use("/cart", cartRouter);
+
+app.use("/cart", authenticate, cartRouter);
 
 app.listen(process.env.port, async () => {
   try {
