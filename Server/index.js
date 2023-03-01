@@ -3,8 +3,9 @@ const app = express();
 const cors = require("cors");
 const { connect } = require("./config/db");
 const { userRouter } = require("./router/user.router");
-const { productRouter } = require("./router/men.router");
 const { cartRouter } = require("./router/cart.router");
+const { menRouter } = require("./router/men.router");
+const { ladiesRouter } = require("./router/ladies.router");
 require("dotenv").config();
 
 app.use(
@@ -21,7 +22,9 @@ app.get("/", (req, res) => {
 app.use("/user", userRouter);
 
 // for all the products Routes
-app.use("/products", productRouter);
+app.use("/products", menRouter);
+
+app.use("/products", ladiesRouter);
 
 // for all the cart Routes
 app.use("/cart", cartRouter);

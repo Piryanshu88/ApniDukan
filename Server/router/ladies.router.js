@@ -1,9 +1,7 @@
-const e = require("express");
 const express = require("express");
-const { MenModel } = require("../models/product.model");
-const menRouter = express.Router();
-
-menRouter.get("/mens", async (req, res) => {
+const { LadiesModel } = require("../models/product.model");
+const ladiesRouter = express.Router();
+ladiesRouter.get("/ladies", async (req, res) => {
   const category = req?.query?.category;
   const page = Math.max(0, req?.query?.page || 0);
   const limit = req?.query?.limit || 15;
@@ -21,11 +19,11 @@ menRouter.get("/mens", async (req, res) => {
       min_price = Number(min_price);
       max_price = Number(max_price);
       console.log(min_price, max_price);
-      const product = await MenModel.find({
+      const product = await LadiesModel.find({
         category: category,
         price: { $gte: min_price, $lte: max_price },
       }).limit(limit);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         category: category,
         price: { $gte: min_price, $lte: max_price },
       }).count();
@@ -38,10 +36,10 @@ menRouter.get("/mens", async (req, res) => {
     } else if (min_price && max_price) {
       min_price = Number(min_price);
       max_price = Number(max_price);
-      const product = await MenModel.find({
+      const product = await LadiesModel.find({
         price: { $gte: min_price, $lte: max_price },
       }).limit(limit);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         price: { $gte: min_price, $lte: max_price },
       }).count();
 
@@ -52,11 +50,11 @@ menRouter.get("/mens", async (req, res) => {
       });
     } else if (category && min_price) {
       min_price = Number(min_price);
-      const product = await MenModel.find({
+      const product = await LadiesModel.find({
         price: { $gte: min_price },
         category: category,
       }).limit(limit);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         price: { $gte: min_price },
       }).count();
 
@@ -67,10 +65,10 @@ menRouter.get("/mens", async (req, res) => {
       });
     } else if (category && max_price) {
       max_price = Number(max_price);
-      const product = await MenModel.find({
+      const product = await LadiesModel.find({
         price: { $lte: max_price },
       }).limit(limit);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         price: { $lte: max_price },
       }).count();
 
@@ -82,10 +80,10 @@ menRouter.get("/mens", async (req, res) => {
     } else if (min_price) {
       min_price = Number(min_price);
 
-      const product = await MenModel.find({
+      const product = await LadiesModel.find({
         price: { $gte: min_price },
       }).limit(limit);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         price: { $gte: min_price },
       }).count();
 
@@ -97,10 +95,10 @@ menRouter.get("/mens", async (req, res) => {
     } else if (max_price) {
       min_price = Number(min_price);
       max_price = Number(max_price);
-      const product = await MenModel.find({
+      const product = await LadiesModel.find({
         price: { $lte: max_price },
       }).limit(limit);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         price: { $lte: max_price },
       }).count();
 
@@ -110,10 +108,10 @@ menRouter.get("/mens", async (req, res) => {
         totalCount: productlength,
       });
     } else if (category && sort) {
-      const product = await MenModel.find({ category: category })
+      const product = await LadiesModel.find({ category: category })
         .limit(limit)
         .sort({ price: s });
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         category: category,
       }).count();
       res.status(201).json({
@@ -122,10 +120,10 @@ menRouter.get("/mens", async (req, res) => {
         totalCount: productlength,
       });
     } else if (category) {
-      const product = await MenModel.find({ category: category })
+      const product = await LadiesModel.find({ category: category })
         .limit(limit)
         .skip(limit * page);
-      const productlength = await MenModel.find({
+      const productlength = await LadiesModel.find({
         category: category,
       }).count();
       res.status(201).json({
@@ -134,40 +132,40 @@ menRouter.get("/mens", async (req, res) => {
         totalCount: productlength,
       });
     } else if (limit && page && sort) {
-      const product = await MenModel.find()
+      const product = await LadiesModel.find()
         .limit(limit)
         .skip(limit * page)
         .sort({ price: s });
-      const productlength = await MenModel.find().count();
+      const productlength = await LadiesModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else if (page && sort) {
-      const product = await MenModel.find()
+      const product = await LadiesModel.find()
         .limit(limit)
         .skip(limit * page)
         .sort({ price: s });
-      const productlength = await MenModel.find().count();
+      const productlength = await LadiesModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else if (page) {
-      const product = await MenModel.find()
+      const product = await LadiesModel.find()
         .limit(limit)
         .skip(limit * page);
-      const productlength = await MenModel.find().count();
+      const productlength = await LadiesModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
         totalCount: productlength,
       });
     } else {
-      const product = await MenModel.find().limit(limit);
-      const productlength = await MenModel.find().count();
+      const product = await LadiesModel.find().limit(limit);
+      const productlength = await LadiesModel.find().count();
       res.status(201).json({
         data: product,
         status: "success",
@@ -180,10 +178,10 @@ menRouter.get("/mens", async (req, res) => {
   }
 });
 
-menRouter.get("/mens/:id", async (req, res) => {
+ladiesRouter.get("/ladies/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await MenModel.find({ _id: id });
+    const product = await LadiesModel.find({ _id: id });
     res.status(201).json({ data: product, status: "success" });
   } catch (error) {
     console.log(error);
@@ -191,9 +189,9 @@ menRouter.get("/mens/:id", async (req, res) => {
   }
 });
 
-menRouter.post("/mens/add", async (req, res) => {
+ladiesRouter.post("/ladies/add", async (req, res) => {
   try {
-    const product = new MenModel(req.body);
+    const product = new LadiesModel(req.body);
     product.save();
     res
       .status(201)
@@ -204,10 +202,10 @@ menRouter.post("/mens/add", async (req, res) => {
   }
 });
 
-menRouter.patch("/mens/:id", async (req, res) => {
+ladiesRouter.patch("/ladies/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await MenModel.findByIdAndUpdate({ _id: id }, req.body);
+    const product = await LadiesModel.findByIdAndUpdate({ _id: id }, req.body);
     res
       .status(201)
       .json({ message: "Data update successfully", status: "success" });
@@ -217,10 +215,10 @@ menRouter.patch("/mens/:id", async (req, res) => {
   }
 });
 
-menRouter.delete("/mens/:id", async (req, res) => {
+ladiesRouter.delete("/ladies/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await MenModel.findByIdAndDelete({ _id: id });
+    const product = await LadiesModel.findByIdAndDelete({ _id: id });
     res
       .status(201)
       .json({ message: "Data delete successfully", status: "success" });
@@ -231,5 +229,5 @@ menRouter.delete("/mens/:id", async (req, res) => {
 });
 
 module.exports = {
-  menRouter,
+  ladiesRouter,
 };

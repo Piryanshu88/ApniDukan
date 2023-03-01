@@ -19,7 +19,8 @@ const productSchema = mongoose.Schema({
 });
 
 const MenModel = mongoose.model("men", productSchema);
-
+const LadiesModel = mongoose.model("ladie", productSchema);
 module.exports = {
   MenModel,
+  LadiesModel,
 };
