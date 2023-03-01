@@ -1,0 +1,5 @@
+.nav_drop_down {
+  display: flex;
+  gap: 20px;
+  width: 100vh;
+}
