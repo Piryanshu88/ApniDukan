@@ -1,6 +1,6 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+
 import Slider from "react-slick";
 import React from "react";
 import { Box, Divider, Image, Text } from "@chakra-ui/react";
@@ -50,7 +50,6 @@ var settings = {
   speed: 500,
   slidesToShow: 8,
   slidesToScroll: 1,
-
   responsive: [
     {
       breakpoint: 1024,
@@ -128,7 +127,7 @@ export const Categories = () => {
     <div>
       <Slider {...settings}>
         {categories?.map((item, i) => (
-          <Box m="5px" alignItems="center" textAlign={"center"}>
+          <Box m="5px" alignItems="center" textAlign={"center"} key={i}>
             <Image
               m="auto"
               _hover={{ transform: "scale(1.1)", transition: "400ms" }}

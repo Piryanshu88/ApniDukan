@@ -1,12 +1,33 @@
 import { Button, Flex, Image, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import img from "../../assets/f_home.png";
 import img2 from "../../assets/swomen.png";
 import { Categories } from "./Categories";
+import axios, { AxiosResponse } from "axios";
+import { Data, ProDucts } from "../../constants";
+import { Scroller } from "./Categories/Scroller";
 //C:\Users\Piryanshu\Desktop\ApniDukan\Client\apnidukan\src\assets\f_home.png
+
+const getData = async (str: string) => {
+  const response: AxiosResponse<Data> = await axios.get(
+    `https://rich-erin-walkingstick-hem.cyclic.app/products/${str}`
+  );
+  return response.data;
+};
+
 export const HomeComp = () => {
-  const [activeArrival, setActiveArrival] = useState("ladies");
+  const [arrivalData, setArrivalData] = useState<ProDucts[]>([]);
+  const [activeArrival, setActiveArrival] = useState<string>("ladies");
+
+  useEffect(() => {
+    if (activeArrival == "ladies") {
+      getData("ladies").then((re: Data) => {
+        setArrivalData(re.data);
+      });
+    }
+  }, []);
+
   return (
     <div className={styles.home}>
       <div className={styles.home_section_1}>
@@ -212,6 +233,9 @@ export const HomeComp = () => {
           >
             Sport
           </Text>
+        </div>
+        <div className={styles.new_arrivals_slider}>
+          <Scroller data={arrivalData} />
         </div>
       </div>
     </div>

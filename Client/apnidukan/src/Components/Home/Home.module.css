@@ -35,10 +35,12 @@
 .shop_box {
   background-image: url(../../assets/hmgoepprod.jpg);
   width: 65%;
+  border: 1px solid var(--color-bg);
   background-repeat: no-repeat;
   margin: auto;
   padding-top: 20px;
   display: flex;
+  background-size: cover;
   flex-direction: column;
   gap: 10px;
 }
@@ -66,8 +68,10 @@
   }
   .shop_box {
     width: 90%;
+    background-position: center;
   }
-  .category_box {
+  .category_box,
+  .new_arrivals {
     width: 90%;
     margin: auto;
   }
@@ -83,10 +87,12 @@
     width: 90%;
     background-position: center;
   }
-  .category_box {
+  .category_box,
+  .new_arrivals {
     width: 80%;
     margin: auto;
   }
+
   .home_section_2 {
     width: 90%;
     background-position: center;
