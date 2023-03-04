@@ -1,32 +1,75 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 .home_section_1 {
   width: 65%;
   background-repeat: no-repeat;
   margin: auto;
   height: max-content;
-  border: 1px solid white;
+  border: 1px solid var(--color-bg);
   background-size: cover;
   background-image: url(../../assets/magzines/mag_women.jpg);
-  background-color: rgba(0, 0, 0, 0.4);
 }
-
-.home_section_1 > :nth-child(2) {
+.home_section_1 > :nth-child(2),
+.home_section_2 > :nth-child(2) {
   flex: 1;
   margin-top: 100px;
   margin-bottom: 30px;
 }
 
+.home_section_2 {
+  width: 65%;
+  background-repeat: no-repeat;
+  border: 1px solid var(--color-bg);
+  background-size: cover;
+
+  background-image: url(../../assets/women.jpg);
+  height: fit-content;
+  margin: auto;
+}
+.home_section_2 > :nth-child(2) {
+  margin-top: 140px;
+}
+.shop_box {
+  background-image: url(../../assets/hmgoepprod.jpg);
+  width: 65%;
+  background-repeat: no-repeat;
+  margin: auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 /* for tabs */
 @media all and (min-width: 640px) and (max-width: 1024px) {
   .home_section_1 {
     width: 90%;
     background-position: center;
   }
+  .home_section_2 {
+    width: 90%;
+    background-position: center;
+  }
+  .shop_box {
+    width: 90%;
+  }
 }
 
 /* for mobile screens */
 @media all and (min-width: 324px) and (max-width: 640px) {
+  .shop_box {
+    width: 90%;
+    display: none;
+  }
   .home_section_1 {
     width: 90%;
     background-position: center;
+  }
+  .home_section_2 {
+    width: 90%;
+    background-position: center;
+    background-image: url(../../assets/women_min.jpg);
   }
 }
