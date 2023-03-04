@@ -1,0 +1,16 @@
+.home_section_1 {
+  width: 65%;
+  background-repeat: no-repeat;
+  margin: auto;
+  height: max-content;
+  border: 1px solid white;
+  background-size: cover;
+  background-image: url(../../assets/magzines/mag_women.jpg);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.home_section_1 > :nth-child(2) {
+  flex: 1;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
