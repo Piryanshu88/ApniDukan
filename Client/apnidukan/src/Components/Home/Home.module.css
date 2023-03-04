@@ -54,9 +54,14 @@
   display: flex;
   font-size: 17px;
   margin-top: 20px;
+  flex-wrap: wrap;
+}
+.new_arrivals_category > {
+  margin-bottom: 10px;
 }
 .new_arrivals_slider {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* for tabs */

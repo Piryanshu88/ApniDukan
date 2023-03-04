@@ -145,6 +145,7 @@ export const HomeComp = () => {
             padding="8px 16px"
             border={"1px solid #222"}
             fontWeight="500"
+            marginBottom={"10px"}
             borderRadius="20px"
             color={activeArrival == "ladies" ? "#fff" : "#222"}
             background={
@@ -158,6 +159,7 @@ export const HomeComp = () => {
           <Text
             marginRight="16px"
             padding="8px 16px"
+            marginBottom={"10px"}
             border={"1px solid #222"}
             fontWeight="500"
             borderRadius="20px"
@@ -171,6 +173,7 @@ export const HomeComp = () => {
           <Text
             marginRight="16px"
             padding="8px 16px"
+            marginBottom={"10px"}
             border={"1px solid #222"}
             fontWeight="500"
             borderRadius="20px"
@@ -186,6 +189,7 @@ export const HomeComp = () => {
           <Text
             marginRight="16px"
             padding="8px 16px"
+            marginBottom={"10px"}
             border={"1px solid #222"}
             cursor="pointer"
             fontWeight="500"
@@ -201,6 +205,7 @@ export const HomeComp = () => {
             padding="8px 16px"
             border={"1px solid #222"}
             cursor="pointer"
+            marginBottom={"10px"}
             fontWeight="500"
             borderRadius="20px"
             color={activeArrival == "kids" ? "#fff" : "#222"}
@@ -214,6 +219,7 @@ export const HomeComp = () => {
             padding="8px 16px"
             cursor="pointer"
             border={"1px solid #222"}
+            marginBottom={"10px"}
             fontWeight="500"
             borderRadius="20px"
             color={activeArrival == "hmhome" ? "#fff" : "#222"}
@@ -228,6 +234,7 @@ export const HomeComp = () => {
             cursor="pointer"
             marginRight="16px"
             padding="8px 16px"
+            marginBottom={"10px"}
             border={"1px solid #222"}
             fontWeight="500"
             borderRadius="20px"
