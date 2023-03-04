@@ -12,6 +12,7 @@
 :root {
   --text-color: #222222;
   --color-bg: #faf9f8;
+  --hover-color: #e50010;
   --color-bg-variant: #2c2c6c;
   --primary-box-shadow: rgb(28 28 28 /8%) 0px 2px 8px;
   --color-primary: #4db5ff;

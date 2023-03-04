@@ -19,7 +19,11 @@ const PreviousBtn = (props) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <Text color={"blackAlpha.500"} fontSize="20px">
+      <Text
+        color={"blackAlpha.500"}
+        fontSize="20px"
+        _hover={{ color: "var(--hover-color )" }}
+      >
         <AiOutlineArrowLeft />{" "}
       </Text>
     </div>
@@ -29,7 +33,11 @@ const NextBtn = (props) => {
   const { className, onClick } = props;
   return (
     <div className={className} onClick={onClick}>
-      <Text color={"blackAlpha.500"} fontSize="20px">
+      <Text
+        color={"blackAlpha.500"}
+        fontSize="20px"
+        _hover={{ color: "var(--hover-color )" }}
+      >
         <AiOutlineArrowRight />
       </Text>
     </div>

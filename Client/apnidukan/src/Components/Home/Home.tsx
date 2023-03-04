@@ -1,11 +1,12 @@
 import { Button, Flex, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Home.module.css";
 import img from "../../assets/f_home.png";
 import img2 from "../../assets/swomen.png";
 import { Categories } from "./Categories";
 //C:\Users\Piryanshu\Desktop\ApniDukan\Client\apnidukan\src\assets\f_home.png
 export const HomeComp = () => {
+  const [activeArrival, setActiveArrival] = useState("ladies");
   return (
     <div className={styles.home}>
       <div className={styles.home_section_1}>
@@ -96,11 +97,122 @@ export const HomeComp = () => {
         </div>
       </div>
 
+      {/* categories */}
+
       <div className={styles.category_box}>
         <Text textAlign="left" fontSize={"xl"} fontWeight="500">
           Categories for you
         </Text>
         <Categories />
+      </div>
+
+      {/* new arrivals */}
+
+      <div className={styles.new_arrivals}>
+        <Text textAlign="left" fontSize={"xl"} fontWeight="500">
+          New Arrivals
+        </Text>
+        <div className={styles.new_arrivals_category}>
+          <Text
+            marginRight="16px"
+            padding="8px 16px"
+            border={"1px solid #222"}
+            fontWeight="500"
+            borderRadius="20px"
+            color={activeArrival == "ladies" ? "#fff" : "#222"}
+            background={
+              activeArrival == "ladies" ? "var(--hover-color)" : "#fff"
+            }
+            onClick={() => setActiveArrival("ladies")}
+            cursor="pointer"
+          >
+            Ladies
+          </Text>
+          <Text
+            marginRight="16px"
+            padding="8px 16px"
+            border={"1px solid #222"}
+            fontWeight="500"
+            borderRadius="20px"
+            onClick={() => setActiveArrival("men")}
+            color={activeArrival == "men" ? "#fff" : "#222"}
+            background={activeArrival == "men" ? "var(--hover-color)" : "#fff"}
+            cursor="pointer"
+          >
+            Men
+          </Text>
+          <Text
+            marginRight="16px"
+            padding="8px 16px"
+            border={"1px solid #222"}
+            fontWeight="500"
+            borderRadius="20px"
+            color={activeArrival == "divided" ? "#fff" : "#222"}
+            background={
+              activeArrival == "divided" ? "var(--hover-color)" : "#fff"
+            }
+            cursor="pointer"
+            onClick={() => setActiveArrival("divided")}
+          >
+            Divided
+          </Text>
+          <Text
+            marginRight="16px"
+            padding="8px 16px"
+            border={"1px solid #222"}
+            cursor="pointer"
+            fontWeight="500"
+            borderRadius="20px"
+            onClick={() => setActiveArrival("baby")}
+            color={activeArrival == "baby" ? "#fff" : "#222"}
+            background={activeArrival == "baby" ? "var(--hover-color)" : "#fff"}
+          >
+            Baby
+          </Text>
+          <Text
+            marginRight="16px"
+            padding="8px 16px"
+            border={"1px solid #222"}
+            cursor="pointer"
+            fontWeight="500"
+            borderRadius="20px"
+            color={activeArrival == "kids" ? "#fff" : "#222"}
+            onClick={() => setActiveArrival("kids")}
+            background={activeArrival == "kids" ? "var(--hover-color)" : "#fff"}
+          >
+            Kids
+          </Text>
+          <Text
+            marginRight="16px"
+            padding="8px 16px"
+            cursor="pointer"
+            border={"1px solid #222"}
+            fontWeight="500"
+            borderRadius="20px"
+            color={activeArrival == "hmhome" ? "#fff" : "#222"}
+            background={
+              activeArrival == "hmhome" ? "var(--hover-color)" : "#fff"
+            }
+            onClick={() => setActiveArrival("hmhome")}
+          >
+            H & M Home
+          </Text>
+          <Text
+            cursor="pointer"
+            marginRight="16px"
+            padding="8px 16px"
+            border={"1px solid #222"}
+            fontWeight="500"
+            borderRadius="20px"
+            color={activeArrival == "sport" ? "#fff" : "#222"}
+            background={
+              activeArrival == "sport" ? "var(--hover-color)" : "#fff"
+            }
+            onClick={() => setActiveArrival("sport")}
+          >
+            Sport
+          </Text>
+        </div>
       </div>
     </div>
   );

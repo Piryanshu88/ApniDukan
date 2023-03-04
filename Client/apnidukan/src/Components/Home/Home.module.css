@@ -43,10 +43,17 @@
   gap: 10px;
 }
 
-.category_box {
+.category_box,
+.new_arrivals {
   width: 65%;
   margin: auto;
 }
+.new_arrivals_category {
+  display: flex;
+  font-size: 17px;
+  margin-top: 20px;
+}
+
 /* for tabs */
 @media all and (min-width: 640px) and (max-width: 1024px) {
   .home_section_1 {
