@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "./Scroller.css";
 import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const PreviousBtn = (props) => {
   const { className, onClick } = props;
   return (
@@ -78,28 +79,37 @@ export const Scroller = ({ data }) => {
     <div>
       <Slider {...settings}>
         {data?.map((item, i) => (
-          <Stack
-            key={i}
-            m="5px"
-            alignItems="center"
-            textAlign={"center"}
-            justifyContent="flex-start"
-          >
-            <Image m="auto" p="10px" pb={"0"} src={item.image[0].src} alt="" />
-            <Text
-              textAlign={"left"}
-              p="0"
-              pl="10px"
-              fontWeight="500"
-              textOverflow={"ellipsis"}
+          <Link to={`/singleproduct/${item._id}`}>
+            <Stack
+              key={i}
+              m="5px"
+              textAlign={"center"}
+              justifyContent="flex-start"
+              alignItems="flex-start"
+              cursor={"pointer"}
             >
-              {" "}
-              {item.title}
-            </Text>
-            <Text textAlign={"left"} p="0" m="0" pl="10px">
-              Rs.{item.price}{" "}
-            </Text>
-          </Stack>
+              <Image
+                m="auto"
+                p="10px"
+                pb={"0"}
+                src={item.image[0].src}
+                alt={item.title}
+              />
+              <Text
+                textAlign={"left"}
+                p="0"
+                pl="10px"
+                fontWeight="500"
+                textOverflow={"ellipsis"}
+              >
+                {" "}
+                {item.title}
+              </Text>
+              <Text textAlign={"left"} p="0" m="0" pl="10px">
+                Rs.{item.price}{" "}
+              </Text>
+            </Stack>
+          </Link>
         ))}
       </Slider>
     </div>

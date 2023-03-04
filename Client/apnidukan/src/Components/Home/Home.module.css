@@ -7,6 +7,7 @@
   width: 65%;
   background-repeat: no-repeat;
   margin: auto;
+  position: relative;
   height: max-content;
   border: 1px solid var(--color-bg);
   background-size: cover;
@@ -24,7 +25,7 @@
   background-repeat: no-repeat;
   border: 1px solid var(--color-bg);
   background-size: cover;
-
+  position: relative;
   background-image: url(../../assets/women.jpg);
   height: fit-content;
   margin: auto;

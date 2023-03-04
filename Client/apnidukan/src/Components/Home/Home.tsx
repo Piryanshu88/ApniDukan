@@ -251,6 +251,12 @@ export const HomeComp = () => {
           <Scroller data={arrivalData} />
         </div>
       </div>
+
+      {/* kids section
+       */}
+      <div className={styles.kids_section}>
+        
+      </div>
     </div>
   );
 };
