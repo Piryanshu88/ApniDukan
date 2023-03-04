@@ -86,7 +86,13 @@ export const Scroller = ({ data }) => {
             justifyContent="flex-start"
           >
             <Image m="auto" p="10px" pb={"0"} src={item.image[0].src} alt="" />
-            <Text textAlign={"left"} p="0" pl="10px" fontWeight="500">
+            <Text
+              textAlign={"left"}
+              p="0"
+              pl="10px"
+              fontWeight="500"
+              textOverflow={"ellipsis"}
+            >
               {" "}
               {item.title}
             </Text>

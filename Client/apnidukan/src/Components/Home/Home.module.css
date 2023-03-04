@@ -55,6 +55,9 @@
   font-size: 17px;
   margin-top: 20px;
 }
+.new_arrivals_slider {
+  margin-top: 20px;
+}
 
 /* for tabs */
 @media all and (min-width: 640px) and (max-width: 1024px) {

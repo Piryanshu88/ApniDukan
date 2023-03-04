@@ -20,6 +20,12 @@ export const HomeComp = () => {
   const [arrivalData, setArrivalData] = useState<ProDucts[]>([]);
   const [activeArrival, setActiveArrival] = useState<string>("ladies");
 
+  const handleArrivals = (a: string, b: string) => {
+    setActiveArrival(a);
+    getData(b).then((re: Data) => {
+      setArrivalData(re.data);
+    });
+  };
   useEffect(() => {
     if (activeArrival == "ladies") {
       getData("ladies").then((re: Data) => {
@@ -144,7 +150,7 @@ export const HomeComp = () => {
             background={
               activeArrival == "ladies" ? "var(--hover-color)" : "#fff"
             }
-            onClick={() => setActiveArrival("ladies")}
+            onClick={() => handleArrivals("ladies", "ladies")}
             cursor="pointer"
           >
             Ladies
@@ -155,7 +161,7 @@ export const HomeComp = () => {
             border={"1px solid #222"}
             fontWeight="500"
             borderRadius="20px"
-            onClick={() => setActiveArrival("men")}
+            onClick={() => handleArrivals("men", "mens")}
             color={activeArrival == "men" ? "#fff" : "#222"}
             background={activeArrival == "men" ? "var(--hover-color)" : "#fff"}
             cursor="pointer"
@@ -173,7 +179,7 @@ export const HomeComp = () => {
               activeArrival == "divided" ? "var(--hover-color)" : "#fff"
             }
             cursor="pointer"
-            onClick={() => setActiveArrival("divided")}
+            onClick={() => handleArrivals("divided", "dividend")}
           >
             Divided
           </Text>
@@ -184,7 +190,7 @@ export const HomeComp = () => {
             cursor="pointer"
             fontWeight="500"
             borderRadius="20px"
-            onClick={() => setActiveArrival("baby")}
+            onClick={() => handleArrivals("baby", "kids")}
             color={activeArrival == "baby" ? "#fff" : "#222"}
             background={activeArrival == "baby" ? "var(--hover-color)" : "#fff"}
           >
@@ -198,7 +204,7 @@ export const HomeComp = () => {
             fontWeight="500"
             borderRadius="20px"
             color={activeArrival == "kids" ? "#fff" : "#222"}
-            onClick={() => setActiveArrival("kids")}
+            onClick={() => handleArrivals("kids", "kids")}
             background={activeArrival == "kids" ? "var(--hover-color)" : "#fff"}
           >
             Kids
@@ -214,7 +220,7 @@ export const HomeComp = () => {
             background={
               activeArrival == "hmhome" ? "var(--hover-color)" : "#fff"
             }
-            onClick={() => setActiveArrival("hmhome")}
+            onClick={() => handleArrivals("hmhome", "home")}
           >
             H & M Home
           </Text>
@@ -229,7 +235,7 @@ export const HomeComp = () => {
             background={
               activeArrival == "sport" ? "var(--hover-color)" : "#fff"
             }
-            onClick={() => setActiveArrival("sport")}
+            onClick={() => handleArrivals("sport", "sports")}
           >
             Sport
           </Text>
