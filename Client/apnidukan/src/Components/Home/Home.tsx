@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Home.module.css";
 import img from "../../assets/f_home.png";
 import img2 from "../../assets/swomen.png";
+import { Categories } from "./Categories";
 //C:\Users\Piryanshu\Desktop\ApniDukan\Client\apnidukan\src\assets\f_home.png
 export const HomeComp = () => {
   return (
@@ -41,6 +42,7 @@ export const HomeComp = () => {
           </Button>
         </Flex>
       </div>
+
       <div className={styles.home_section_2}>
         <div></div>
         <div>
@@ -66,6 +68,7 @@ export const HomeComp = () => {
           </Button>
         </Flex>
       </div>
+
       <div className={styles.shop_box}>
         <div>
           <Text color="#ffffff" fontWeight={"600"}>
@@ -91,6 +94,13 @@ export const HomeComp = () => {
             </Button>
           </Flex>
         </div>
+      </div>
+
+      <div className={styles.category_box}>
+        <Text textAlign="left" fontSize={"xl"} fontWeight="500">
+          Categories for you
+        </Text>
+        <Categories />
       </div>
     </div>
   );

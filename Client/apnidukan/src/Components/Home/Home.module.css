@@ -42,6 +42,11 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.category_box {
+  width: 65%;
+  margin: auto;
+}
 /* for tabs */
 @media all and (min-width: 640px) and (max-width: 1024px) {
   .home_section_1 {
@@ -55,6 +60,10 @@
   .shop_box {
     width: 90%;
   }
+  .category_box {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 /* for mobile screens */
@@ -66,6 +75,10 @@
   .home_section_1 {
     width: 90%;
     background-position: center;
+  }
+  .category_box {
+    width: 80%;
+    margin: auto;
   }
   .home_section_2 {
     width: 90%;
