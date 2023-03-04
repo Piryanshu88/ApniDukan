@@ -14,3 +14,19 @@
   margin-top: 100px;
   margin-bottom: 30px;
 }
+
+/* for tabs */
+@media all and (min-width: 640px) and (max-width: 1024px) {
+  .home_section_1 {
+    width: 90%;
+    background-position: center;
+  }
+}
+
+/* for mobile screens */
+@media all and (min-width: 324px) and (max-width: 640px) {
+  .home_section_1 {
+    width: 90%;
+    background-position: center;
+  }
+}
