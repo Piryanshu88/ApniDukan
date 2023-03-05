@@ -2,21 +2,34 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  margin-top: 30px;
 }
 .home_section_1 {
   width: 65%;
   background-repeat: no-repeat;
   margin: auto;
-  position: relative;
   height: max-content;
   border: 1px solid var(--color-bg);
   background-size: cover;
   background-image: url(../../assets/magzines/mag_women.jpg);
 }
-.home_section_1 > :nth-child(2),
-.home_section_2 > :nth-child(2) {
+
+/* box shadow  */
+.home_section_1 > div,
+.home_section_2 > div,
+.sports_section > div,
+.home_care_section > div {
   flex: 1;
+  background: linear-gradient(to bottom, transparent 0%, black 250%);
+  bottom: 0;
+  content: "";
+  display: block;
   margin-top: 100px;
+  padding-bottom: 30px;
+}
+
+.home_section_2 > div :nth-child(2) {
+  margin-top: 150px;
   margin-bottom: 30px;
 }
 
@@ -25,7 +38,6 @@
   background-repeat: no-repeat;
   border: 1px solid var(--color-bg);
   background-size: cover;
-  position: relative;
   background-image: url(../../assets/women.jpg);
   height: fit-content;
   margin: auto;
@@ -64,6 +76,30 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.sports_section {
+  width: 65%;
+  background-repeat: no-repeat;
+  border: 1px solid var(--color-bg);
+  background-size: cover;
+  background-image: url(../../assets/sport.jpg);
+  height: fit-content;
+  margin: auto;
+}
+.sports_section > div {
+  margin-top: 250px;
+}
+.home_care_section {
+  width: 65%;
+  background-repeat: no-repeat;
+  border: 1px solid var(--color-bg);
+  background-size: cover;
+  background-image: url(../../assets/homecare.jpg);
+  height: fit-content;
+  margin: auto;
+}
+.home_care_section > div {
+  margin-top: 300px;
+}
 
 /* for tabs */
 @media all and (min-width: 640px) and (max-width: 1024px) {
@@ -80,7 +116,9 @@
     background-position: center;
   }
   .category_box,
-  .new_arrivals {
+  .new_arrivals,
+  .sports_section,
+  .home_care_section {
     width: 90%;
     margin: auto;
   }
@@ -101,7 +139,12 @@
     width: 80%;
     margin: auto;
   }
-
+  .sports_section,
+  .home_care_section {
+    width: 90%;
+    margin: auto;
+    background-position: center;
+  }
   .home_section_2 {
     width: 90%;
     background-position: center;

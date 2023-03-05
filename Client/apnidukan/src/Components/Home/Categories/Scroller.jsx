@@ -74,7 +74,6 @@ var settings = {
 };
 
 export const Scroller = ({ data }) => {
-  console.log("scroller", data);
   return (
     <div>
       <Slider {...settings}>

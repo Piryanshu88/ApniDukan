@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import img from "../../assets/f_home.png";
 import img2 from "../../assets/swomen.png";
+import img3 from "../../assets/training.png";
 import { Categories } from "./Categories";
 import axios, { AxiosResponse } from "axios";
 import { Data, ProDucts } from "../../constants";
@@ -37,64 +38,68 @@ export const HomeComp = () => {
   return (
     <div className={styles.home}>
       <div className={styles.home_section_1}>
-        <div></div>
         <div>
-          <Image src={img} />
+          <div></div>
+          <div>
+            <Image src={img} />
+          </div>
+          <Text
+            fontSize={"17px"}
+            color="#ffffff"
+            fontWeight={"600"}
+            marginBottom="20px"
+          >
+            The new collection is out now
+          </Text>
+          <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
+            <Button
+              borderRadius={"0"}
+              color="var(--text-color)"
+              padding={"8px"}
+              fontSize="14px"
+              margin={"0"}
+            >
+              Shop Now{" "}
+            </Button>
+            <Button
+              borderRadius={"0"}
+              color="var(--text-color)"
+              padding={"8px"}
+              fontSize="14px"
+              margin={"0"}
+            >
+              Get Inspired
+            </Button>
+          </Flex>
         </div>
-        <Text
-          fontSize={"17px"}
-          color="#ffffff"
-          fontWeight={"600"}
-          marginBottom="20px"
-        >
-          The new collection is out now
-        </Text>
-        <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
-          <Button
-            borderRadius={"0"}
-            color="var(--text-color)"
-            padding={"8px"}
-            fontSize="14px"
-            margin={"0"}
-          >
-            Shop Now{" "}
-          </Button>
-          <Button
-            borderRadius={"0"}
-            color="var(--text-color)"
-            padding={"8px"}
-            fontSize="14px"
-            margin={"0"}
-          >
-            Get Inspired
-          </Button>
-        </Flex>
       </div>
 
       <div className={styles.home_section_2}>
-        <div></div>
         <div>
-          <Image src={img2} />
-        </div>
-        <Text
-          fontSize={"17px"}
-          color="#ffffff"
-          fontWeight={"600"}
-          marginBottom="20px"
-        >
-          The new collection is out now
-        </Text>
-        <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
-          <Button
-            borderRadius={"0"}
-            color="var(--text-color)"
-            padding={"8px"}
-            fontSize="14px"
-            margin={"0"}
+          <div></div>
+          <div>
+            <Image src={img2} />
+          </div>
+          <Text
+            fontSize={"17px"}
+            color="#ffffff"
+            fontWeight={"600"}
+            marginBottom="20px"
           >
-            Shop Now{" "}
-          </Button>
-        </Flex>
+            The new collection is out now
+          </Text>
+          <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
+            <Button
+              borderRadius={"0"}
+              color="var(--text-color)"
+              padding={"8px"}
+              fontSize="14px"
+              margin={"0"}
+            >
+              Shop Now{" "}
+            </Button>
+          </Flex>
+        </div>
       </div>
 
       <div className={styles.shop_box}>
@@ -254,8 +259,69 @@ export const HomeComp = () => {
 
       {/* kids section
        */}
-      <div className={styles.kids_section}>
-        
+      <div className={styles.sports_section}>
+        <div>
+          <div></div>
+          <div>
+            <Image src={img3} alt="sport-section" />
+          </div>
+          <Text
+            fontSize={"15px"}
+            color="#ffffff"
+            fontWeight={"600"}
+            marginBottom="20px"
+          >
+            Lightweight training gear with DryMove™, engineered for any run on
+            any day
+          </Text>
+          <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
+            <Button
+              borderRadius={"0"}
+              color="var(--text-color)"
+              padding={"8px"}
+              fontSize="14px"
+              margin={"0"}
+            >
+              Men
+            </Button>
+            <Button
+              borderRadius={"0"}
+              color="var(--text-color)"
+              padding={"8px"}
+              fontSize="14px"
+              margin={"0"}
+            >
+              Women
+            </Button>
+          </Flex>
+        </div>
+      </div>
+
+      {/* home care section */}
+      <div className={styles.home_care_section}>
+        <div>
+          <div></div>
+          <div></div>
+          <Text
+            fontSize={"25px"}
+            color="#ffffff"
+            fontWeight={"600"}
+            marginBottom="20px"
+          >
+            Current crush: Colours!
+          </Text>
+          <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
+            <Button
+              borderRadius={"0"}
+              color="var(--text-color)"
+              padding={"8px"}
+              fontSize="14px"
+              margin={"0"}
+            >
+              Shop Now
+            </Button>
+          </Flex>
+        </div>
       </div>
     </div>
   );
