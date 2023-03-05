@@ -8,6 +8,7 @@ import { Categories } from "./Categories";
 import axios, { AxiosResponse } from "axios";
 import { Data, ProDucts } from "../../constants";
 import { Scroller } from "./Categories/Scroller";
+import { Mazagines } from "./Mazagines";
 //C:\Users\Piryanshu\Desktop\ApniDukan\Client\apnidukan\src\assets\f_home.png
 
 const getData = async (str: string) => {
@@ -323,6 +324,9 @@ export const HomeComp = () => {
           </Flex>
         </div>
       </div>
+
+      {/* mazagines section  */}
+      <Mazagines />
     </div>
   );
 };
