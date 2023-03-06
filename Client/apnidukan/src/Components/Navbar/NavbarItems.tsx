@@ -11,6 +11,7 @@ import {
 import styles from "./NavbarItems.module.css";
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface propsItems {
   key: string;
@@ -19,9 +20,14 @@ interface propsItems {
 interface props {
   comp: string;
   list: propsItems[];
+  onClick: string;
 }
-export const NavbarSec = ({ comp, list }: props) => {
+export const NavbarSec = ({ comp, list, onClick }: props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`category/${onClick}`);
+  };
   return (
     <Menu isOpen={isOpen}>
       <MenuButton
@@ -29,6 +35,7 @@ export const NavbarSec = ({ comp, list }: props) => {
         mx={1}
         py={[1, 2, 2]}
         px={4}
+        onClick={handleClick}
         zIndex="10000000000"
         _hover={{
           bg: useColorModeValue("white.100", "white.800"),

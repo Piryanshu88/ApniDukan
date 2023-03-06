@@ -35,3 +35,14 @@ export type ProDucts = {
   comingSoon: string;
   redPrice: string;
 };
+
+export type DataPayload = {
+  data: ProDucts[];
+  status: string;
+  totalCount: number;
+};
+
+export type ActionPayload = {
+  type: string;
+  payload: DataPayload;
+};
