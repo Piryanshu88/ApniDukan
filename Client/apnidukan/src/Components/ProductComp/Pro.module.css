@@ -1,0 +1,14 @@
+.products_page {
+  display: flex;
+  gap: 10px;
+  border: 1px solid red;
+}
+.products_page > div:nth-child(1) {
+  border: 1px solid salmon;
+  flex: 1;
+}
+
+.products_page > div:nth-child(2) {
+  border: 1px solid salmon;
+  flex: 5;
+}

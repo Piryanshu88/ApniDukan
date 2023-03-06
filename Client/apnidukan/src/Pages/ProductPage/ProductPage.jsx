@@ -1,6 +1,6 @@
 import React from "react";
-import { Product } from "../../Components/ProductComp/Product";
+import { Pro } from "../../Components/ProductComp/Pro";
 
 export const ProductPage = () => {
-  return <Product />;
+  return <Pro />;
 };
