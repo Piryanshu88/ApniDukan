@@ -27,3 +27,17 @@
   align-items: center;
   gap: 10px;
 }
+
+/* for tabs */
+@media all and (min-width: 640px) and (max-width: 1024px) {
+  .products_card_box {
+    grid-template-columns: repeat(3, 32%);
+  }
+}
+
+/* for mobile screens */
+@media all and (min-width: 324px) and (max-width: 640px) {
+  .products_card_box {
+    grid-template-columns: repeat(2, 44%);
+  }
+}

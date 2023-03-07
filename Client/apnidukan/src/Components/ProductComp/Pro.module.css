@@ -9,3 +9,15 @@
 .products_page > div:nth-child(2) {
   flex: 5;
 }
+@media all and (min-width: 640px) and (max-width: 1024px) {
+  .products_page > div:nth-child(1) {
+    flex: 2;
+  }
+}
+
+/* for mobile screens */
+@media all and (min-width: 324px) and (max-width: 640px) {
+  .products_page > div:nth-child(1) {
+    display: none;
+  }
+}

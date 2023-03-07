@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineAppstore } from "react-icons/ai";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   getCategoryData,
   getDataError,
@@ -83,7 +83,11 @@ export const Product = () => {
       </div>
       <div className={styles.products_card_box}>
         {products?.map((el, i) => {
-          return <ProductCard {...el} key={i} />;
+          return (
+            <Link to={`/singleproduct/${el._id}`}>
+              <ProductCard {...el} key={i} />
+            </Link>
+          );
         })}
       </div>
     </div>
