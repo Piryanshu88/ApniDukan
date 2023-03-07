@@ -32,8 +32,7 @@ export const Product = () => {
     dispatch(getCategoryData(category))
       .then((re) => dispatch(getDataSuccess(re.data)))
       .catch((err) => dispatch(getDataError()));
-    console.log(products);
-  }, []);
+  }, [category]);
 
   if (isError) {
     return <div>Error</div>;
