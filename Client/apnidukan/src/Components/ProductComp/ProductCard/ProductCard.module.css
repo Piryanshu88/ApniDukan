@@ -1,0 +1,29 @@
+.single_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100%;
+}
+.single_card > p {
+  text-align: left;
+}
+.single_card_img {
+  position: relative;
+}
+
+.single_card_img > img:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  right: 0;
+  bottom: 0;
+}
+.single_card:hover .single_card_img > img:nth-child(2) {
+  opacity: 1;
+}
+.color_box {
+  display: flex;
+  font-size: 13px;
+  gap: 4px;
+}

@@ -1,0 +1,29 @@
+.products_category_name {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+}
+.products_box {
+  margin: 10px;
+}
+
+.products_sort_box {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.products_sort_box > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+.products_card_box {
+  display: grid;
+  grid-template-columns: repeat(4, 24%);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
