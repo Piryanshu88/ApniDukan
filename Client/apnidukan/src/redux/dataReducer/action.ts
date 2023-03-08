@@ -1,5 +1,5 @@
 import * as types from "./actionType";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { DataPayload } from "../../constants";
 export const getDataReq = () => {
   return {
@@ -19,10 +19,16 @@ export const getDataError = () => {
   };
 };
 
-const getCategoryData = (category: string) => (dispatch: any) => {
-  dispatch(getDataReq());
-  return axios.get(
-    `https://rich-erin-walkingstick-hem.cyclic.app/products/${category}`
-  );
-};
+const getCategoryData =
+  (category: string, p: string | undefined) => (dispatch: any) => {
+    dispatch(getDataReq());
+    return axios.get(
+      `https://rich-erin-walkingstick-hem.cyclic.app/products/${category}`,
+      {
+        params: {
+          sortby: p,
+        },
+      }
+    );
+  };
 export { getCategoryData };

@@ -441,14 +441,24 @@ export const Navbar = () => {
       <div className={styles.navbar_box_2}>
         <div></div>
         <div className={styles.navbar_items}>
-          <NavbarSec comp="Ladies" list={ladies} onClick="ladies" />
-          <NavbarSec comp="Men" list={men} onClick="mens" />
-          <NavbarSec comp="Dividend" list={dividend} onClick="dividend" />
-          <NavbarSec comp="Kids" list={baby} onClick="kids" />
-          <NavbarSec comp="H&M HOME" list={home} onClick="home" />
-          <NavbarSec comp="Sale" list={sale} onClick="sale" />
-          <NavbarSec comp="Sport" list={sport} onClick="sports" />
-          <NavbarSec comp="Sustainability" list={ladies} onClick="ladies" />
+          <NavbarSec comp="Ladies" list={ladies} onClick="ladies" key={10} />
+          <NavbarSec comp="Men" list={men} onClick="mens" key={20} />
+          <NavbarSec
+            comp="Dividend"
+            list={dividend}
+            onClick="dividend"
+            key={30}
+          />
+          <NavbarSec comp="Kids" list={baby} onClick="kids" key={40} />
+          <NavbarSec comp="H&M HOME" list={home} onClick="home" key={50} />
+          <NavbarSec comp="Sale" list={sale} onClick="sale" key={60} />
+          <NavbarSec comp="Sport" list={sport} onClick="sports" key={70} />
+          <NavbarSec
+            comp="Sustainability"
+            list={ladies}
+            onClick="ladies"
+            key={8}
+          />
         </div>
         <div className={styles.comp_searchbar}>
           <InputGroup>
