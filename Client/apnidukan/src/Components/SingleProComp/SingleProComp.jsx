@@ -1,4 +1,4 @@
-import { Image, Select, Text, useDisclosure } from "@chakra-ui/react";
+import { Button, Image, Select, Text, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import {
 } from "../../redux/dataReducer/action";
 import styles from "./SingleProduct.module.css";
 import { ProDucts } from "../../constants";
+import { CiBag1 } from "react-icons/ci";
 export const SingleProComp = () => {
   const { id, category } = useParams();
   const navigate = useNavigate();
@@ -90,6 +91,20 @@ export const SingleProComp = () => {
               <option value="option2"> M</option>
               <option value="option3"> L</option>
             </Select>
+          </div>
+          <div className={styles.add_to_cart_box}>
+            <Button
+              borderRadius={"0"}
+              colorScheme="blackAlpha"
+              width={"100%"}
+              display="flex"
+              alignItems={"center"}
+              background="var(--text-color)"
+              gap={"10px"}
+            >
+              <CiBag1 />
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 .single_page_box {
   border: 1px solid blueviolet;
   margin: 20px;
+
   margin-top: 35px;
 }
 .img_box {
@@ -24,6 +25,8 @@
 .single_page_details {
   display: flex;
   flex-direction: column;
+  position: sticky;
+  top: 0;
   line-height: 3rem;
   padding: 20px 25px;
   align-items: flex-start;
@@ -62,8 +65,14 @@
   align-items: center;
   font-weight: 500;
   gap: 1px;
+  margin-top: 20px;
 }
 .size_box {
   width: 100%;
+  margin-top: 20px;
   font-weight: 400;
+}
+.add_to_cart_box {
+  width: 100%;
+  margin-top: 30px;
 }
