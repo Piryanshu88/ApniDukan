@@ -1,31 +1,28 @@
-import { ActionPayload } from "../../constants";
+import React from "react";
 import * as types from "./actionType";
-const intialData = {
-  products: [],
+const initialDataSinglePage = {
+  products: {},
   isLoading: false,
   isError: false,
-  totalCount: 0,
 };
 
 export const reducer = (
-  state = intialData,
-  { type, payload }: ActionPayload
+  state = initialDataSinglePage,
+  { type, payload }: any
 ) => {
-  //console.log(type, payload);
   switch (type) {
-    case types.GET_DATA_REQ:
+    case types.GET_DATA_REQ_BY_ID:
       return {
         ...state,
         isLoading: true,
       };
-    case types.GET_DATA_SUCC:
+    case types.GET_DATA_SUCC_BY_ID:
       return {
         ...state,
         isLoading: false,
-        products: payload.data,
-        totalCount: payload.totalCount,
+        products: payload,
       };
-    case types.GET_DATA_ERR:
+    case types.GET_DATA_ERR_BY_ID:
       return {
         ...state,
         isLoading: false,
