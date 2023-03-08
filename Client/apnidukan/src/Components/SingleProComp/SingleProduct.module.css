@@ -3,3 +3,63 @@
   margin: 20px;
   margin-top: 35px;
 }
+.img_box {
+  display: flex;
+  width: 100%;
+}
+.singlepage {
+  display: flex;
+}
+.singlepage > div:nth-child(1) {
+  flex: 2;
+  gap: 10px;
+}
+
+.singlepage > div:nth-child(2) {
+  flex: 1;
+}
+.img_box > img {
+  width: 49%;
+}
+.single_page_details {
+  display: flex;
+  flex-direction: column;
+  line-height: 3rem;
+  padding: 20px 25px;
+  align-items: flex-start;
+}
+.single_page_details > p:nth-child(1) {
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--text-color);
+}
+.single_page_details > p:nth-child(2) {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+.single_page_details > p:nth-child(3) {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+.color_article {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100px;
+  margin-top: 10px;
+}
+.color_article > img {
+  width: 100%;
+  cursor: pointer;
+}
+.review_box {
+  display: flex;
+  font-size: 17px;
+  align-items: center;
+  font-weight: 500;
+  gap: 1px;
+}
