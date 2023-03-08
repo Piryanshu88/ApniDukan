@@ -1,4 +1,4 @@
-import { Image, Text, useDisclosure } from "@chakra-ui/react";
+import { Image, Select, Text, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -83,6 +83,13 @@ export const SingleProComp = () => {
             <GrStar />
             <GrStar />
             <GrStar />
+          </div>
+          <div className={styles.size_box}>
+            <Select placeholder="Select Size" borderRadius={"0"}>
+              <option value="option1">S</option>
+              <option value="option2"> M</option>
+              <option value="option3"> L</option>
+            </Select>
           </div>
         </div>
       </div>

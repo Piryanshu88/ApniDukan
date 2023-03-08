@@ -63,3 +63,7 @@
   font-weight: 500;
   gap: 1px;
 }
+.size_box {
+  width: 100%;
+  font-weight: 400;
+}
