@@ -14,7 +14,6 @@ import { CiBag1 } from "react-icons/ci";
 export const SingleProComp = () => {
   const { id, category } = useParams();
   const navigate = useNavigate();
-  const [articleCode, setArticleCode] = useState(id);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const { products, isLoading, isError } = useSelector(
@@ -22,8 +21,7 @@ export const SingleProComp = () => {
   );
   useEffect(() => {
     setLoading(true);
-    console.log("use", articleCode);
-    dispatch(getDataById(articleCode))
+    dispatch(getDataById(id, category))
       .then((re) => {
         dispatch(getDataSuccessById(re.data.product));
       })
@@ -31,24 +29,8 @@ export const SingleProComp = () => {
     setTimeout(() => {
       setLoading(false);
     }, 4000);
-    const d = products?.articlesList?.filter((el) => articleCode == el.code)[0]
-      .galleryDetails;
-    console.log(d);
   }, [id]);
 
-  const handleArticle = (e) => {
-    setLoading(true);
-    setArticleCode(e);
-    console.log("s", articleCode);
-    dispatch(getDataById(articleCode))
-      .then((re) => {
-        dispatch(getDataSuccessById(re.data.product));
-      })
-      .catch((err) => dispatch(getDataErrorById()));
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-  };
   if (isError) {
     return <Text>error</Text>;
   }
@@ -61,8 +43,8 @@ export const SingleProComp = () => {
       <div className={styles.singlepage}>
         <div>
           <div className={styles.img_box}>
-            <Image src={products?.articlesList[0].galleryDetails[0]?.baseUrl} />
-            <Image src={products?.articlesList[0].galleryDetails[1]?.baseUrl} />
+            <Image src={""} />
+            <Image src={""} />
           </div>
           <div className={styles.composition_box}>
             <Text>{products?.description}</Text>
@@ -81,12 +63,12 @@ export const SingleProComp = () => {
           </div>
 
           <div className={styles.gallary_img}>
-            {products?.articlesList
+            {/* {products?.articlesList
               ?.filter((el) => articleCode == el.code)[0]
               .galleryDetails?.splice(0, 4)
               .map((el) => {
                 return <Image src={el?.src} />;
-              })}
+              })} */}
           </div>
         </div>
 
@@ -95,7 +77,7 @@ export const SingleProComp = () => {
           <Text>{`Rs. ${products?.whitePrice?.price}.00`}</Text>
           <Text>{products?.color?.text}</Text>
           <div className={styles.color_article}>
-            {products?.articlesList?.splice(0, 4).map((el, i) => {
+            {/* {products?.articlesList?.splice(0, 4).map((el, i) => {
               return (
                 <Image
                   src={el?.galleryDetails[0]?.baseUrl}
@@ -108,10 +90,10 @@ export const SingleProComp = () => {
                       ? "1px solid var(--text-color)"
                       : null
                   }
-                  onClick={() => handleArticle(el.code)}
+                  onClick={() => handleArticle(el?.code)}
                 />
               );
-            })}
+            })} */}
           </div>
           <div className={styles.review_box}>
             <Text>REVIEWS (5)</Text>

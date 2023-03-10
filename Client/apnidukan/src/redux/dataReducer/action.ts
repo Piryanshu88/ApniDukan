@@ -49,17 +49,22 @@ const getCategoryData =
     );
   };
 
+// const getDataById = (id: string) => (dispatch: any) => {
+//   dispatch(getDataReqById());
+//   const options = {
+//     method: "GET",
+//     url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail",
+//     params: { lang: "en", country: "in", productcode: id },
+//     headers: {
+//       "X-RapidAPI-Key": "673350cdfdmsh46e0b62adddf144p1d768bjsn3d8878c91b82",
+//       "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
+//     },
+//   };
+//   return axios.request(options);
+// };
+
 const getDataById = (id: string) => (dispatch: any) => {
   dispatch(getDataReqById());
-  const options = {
-    method: "GET",
-    url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail",
-    params: { lang: "en", country: "in", productcode: id },
-    headers: {
-      "X-RapidAPI-Key": "673350cdfdmsh46e0b62adddf144p1d768bjsn3d8878c91b82",
-      "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
-    },
-  };
-  return axios.request(options);
+  return axios.get(``);
 };
 export { getCategoryData, getDataById };

@@ -32,14 +32,17 @@ export const Product = () => {
   useEffect(() => {
     setSearchParams({ sort: sort });
     console.log("use", sort);
-    dispatch(getCategoryData(category, sort))
-      .then((re) => dispatch(getDataSuccess(re.data)))
-      .catch((err) => dispatch(getDataError()));
-  }, [category]);
+    if (sort == "recommended") {
+      dispatch(getCategoryData(category, ""))
+        .then((re) => dispatch(getDataSuccess(re.data)))
+        .catch((err) => dispatch(getDataError()));
+    }
+  }, [category, sort]);
 
   const sortBylow = (q, p) => {
     setSort(q);
     console.log("sort", sort);
+    setSearchParams({ sort: sort });
     dispatch(getCategoryData(category, p))
       .then((re) => dispatch(getDataSuccess(re.data)))
       .catch((err) => dispatch(getDataError()));
@@ -99,7 +102,7 @@ export const Product = () => {
       <div className={styles.products_card_box}>
         {products?.map((el, i) => {
           return (
-            <Link to={`/singleproduct/${category}/${el.articleCode}`}>
+            <Link to={`/singleproduct/${category}/${el._id}`}>
               <ProductCard {...el} key={i} />
             </Link>
           );

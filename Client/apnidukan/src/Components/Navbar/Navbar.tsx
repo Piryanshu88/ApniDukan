@@ -15,6 +15,7 @@ import { CiUser, CiSearch, CiHeart, CiBag1 } from "react-icons/ci";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { MobileNavbar } from "./MobileNavbar";
 import { NavbarSec } from "./NavbarItems";
+import { Link } from "react-router-dom";
 const list = ["hello", "hello", "hello"];
 const ladies = [
   {
@@ -417,7 +418,9 @@ export const Navbar = () => {
             </Text>
           </div>
           <div>
-            <Image src={logo} className={styles.website_logo} alt="hm_logo" />
+            <Link to="/">
+              <Image src={logo} className={styles.website_logo} alt="hm_logo" />
+            </Link>
           </div>
           <div>
             <Flex alignItems={"center"}>
