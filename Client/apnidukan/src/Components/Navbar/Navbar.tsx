@@ -1,19 +1,34 @@
 import {
+  Button,
   Flex,
+  FormControl,
+  FormHelperText,
+  FormLabel,
   Image,
   Input,
   InputGroup,
   InputLeftAddon,
   InputLeftElement,
+  InputRightElement,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logohm.png";
 
 import { CiUser, CiSearch, CiHeart, CiBag1 } from "react-icons/ci";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { MobileNavbar } from "./MobileNavbar";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { NavbarSec } from "./NavbarItems";
 import { Link } from "react-router-dom";
 const list = ["hello", "hello", "hello"];
@@ -402,6 +417,12 @@ const sale = [
 ];
 
 export const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+  const handleSignIn = () => {};
   return (
     <div className={styles.navbar_box}>
       <div className={styles.nav}>
@@ -423,10 +444,69 @@ export const Navbar = () => {
             </Link>
           </div>
           <div>
-            <Flex alignItems={"center"}>
+            <Flex alignItems={"center"} onClick={onOpen}>
               <CiUser fontSize={"24px"} />
               <Text className={styles.navbar_box_1_text}>Sign In</Text>
             </Flex>
+            <Modal isOpen={true} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent borderRadius={"0"} background="var(--color-bg)">
+                <ModalHeader>Sign In</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Text>
+                    Become a member — don’t miss out on deals, offers, discounts
+                    and bonus vouchers.
+                  </Text>
+                  <FormControl isRequired>
+                    <FormLabel fontWeight={"400"} marginTop="14px">
+                      Email
+                    </FormLabel>
+                    <Input
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      borderRadius={"0"}
+                      focusBorderColor="green.400"
+                      colorScheme={"green"}
+                    />
+                    <FormHelperText>
+                      We'll never share your email.
+                    </FormHelperText>
+                    <FormLabel fontWeight={"400"} marginTop="14px">
+                      Password
+                    </FormLabel>
+                    <InputGroup>
+                      <Input
+                        value={pass}
+                        onChange={(e) => setPass(e.target.value)}
+                        type={show ? "text" : "password"}
+                        borderRadius={"0"}
+                        focusBorderColor="green.400"
+                        colorScheme={"green"}
+                      />
+                      <InputRightElement width="4.5rem">
+                        <Text size="sm" onClick={handleClick} cursor="pointer">
+                          {show ? "Hide" : "Show"}
+                        </Text>
+                      </InputRightElement>
+                    </InputGroup>
+                  </FormControl>
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button
+                    colorScheme={"blackAlpha"}
+                    background="var(--text-color)"
+                    width={"100%"}
+                    borderRadius="0"
+                    onClick={handleSignIn}
+                  >
+                    Sign In
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
             <Flex alignItems={"center"}>
               <CiHeart fontSize={"24px"} />
               <Text className={styles.navbar_box_1_text}>Favourites</Text>
