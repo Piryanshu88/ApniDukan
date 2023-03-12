@@ -55,6 +55,13 @@ const login = (payload: User) => (dispatch: any) => {
     payload
   );
 };
+const signup = (payload: User) => (dispatch: any) => {
+  dispatch(signUpReq());
+  return axios.post(
+    `https://rich-erin-walkingstick-hem.cyclic.app/user/register`,
+    payload
+  );
+};
 export {
   login,
   loginError,
@@ -63,4 +70,8 @@ export {
   signOutErr,
   signOutReq,
   signOutSuccess,
+  signUpErr,
+  signUpReq,
+  signUpSuccess,
+  signup,
 };

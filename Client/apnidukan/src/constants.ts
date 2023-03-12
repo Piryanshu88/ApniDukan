@@ -57,9 +57,9 @@ export type User = {
 };
 export type UserPayload = {
   message: string;
-  token: string;
+  token?: string;
   status: string;
-  data: User;
+  data?: User;
 };
 
 export type UserAction = {

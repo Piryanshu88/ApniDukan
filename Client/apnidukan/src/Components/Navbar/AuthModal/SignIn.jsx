@@ -14,14 +14,57 @@ import {
   InputRightElement,
   Select,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  signup,
+  signUpErr,
+  signUpSuccess,
+} from "../../../redux/authReducer/action";
 import styles from "./Signup.module.css";
 export const SignInComp = () => {
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [gender, setGender] = useState("");
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   const [pass, setPass] = useState("");
+  const toast = useToast();
+  const dispatch = useDispatch();
+  // function for sign up new user
+  const handleSignUp = () => {
+    if (email == "" || pass == "") {
+      toast({
+        title: "Please fill all the credentials",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    } else {
+      dispatch(signup({ firstName, lastName, email, password: pass, gender }))
+        .then((re) => {
+          dispatch(signUpSuccess());
+          toast({
+            title: "user Signup Successfully",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+        })
+        .catch((err) => {
+          dispatch(signUpErr());
+          toast({
+            title: "Oops, Check your credentials again",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        });
+    }
+  };
   return (
     <div className={styles.signup_box}>
       <Text fontSize={"2xl"} fontWeight="500">
@@ -85,6 +128,8 @@ export const SignInComp = () => {
                 </FormLabel>
                 <Input
                   type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   borderRadius={"0"}
                   focusBorderColor="green.400"
                   colorScheme={"green"}
@@ -94,6 +139,8 @@ export const SignInComp = () => {
                 </FormLabel>
                 <InputGroup>
                   <Input
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     type="text"
                     borderRadius={"0"}
                     focusBorderColor="green.400"
@@ -103,6 +150,8 @@ export const SignInComp = () => {
                 <Select
                   focusBorderColor="green.400"
                   borderRadius={"0"}
+                  onChange={(e) => setGender(e.target.value)}
+                  value={gender}
                   marginTop="15px"
                 >
                   <option disabled value="">
@@ -120,6 +169,7 @@ export const SignInComp = () => {
           background="var(--text-color)"
           width={"100%"}
           borderRadius="0"
+          onClick={handleSignUp}
         >
           Become a Member
         </Button>
