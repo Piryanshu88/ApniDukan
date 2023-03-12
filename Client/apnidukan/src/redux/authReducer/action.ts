@@ -55,4 +55,12 @@ const login = (payload: User) => (dispatch: any) => {
     payload
   );
 };
-export { login, loginError, loginReq, loginSuccess };
+export {
+  login,
+  loginError,
+  loginReq,
+  loginSuccess,
+  signOutErr,
+  signOutReq,
+  signOutSuccess,
+};

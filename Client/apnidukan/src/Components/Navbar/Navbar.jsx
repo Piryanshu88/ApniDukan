@@ -10,6 +10,10 @@ import {
   InputLeftAddon,
   InputLeftElement,
   InputRightElement,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Text,
   useToast,
 } from "@chakra-ui/react";
@@ -32,11 +36,13 @@ import {
 } from "@chakra-ui/react";
 import { NavbarSec } from "./NavbarItems";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   login,
   loginError,
   loginSuccess,
+  signOutReq,
+  signOutSuccess,
 } from "../../redux/authReducer/action";
 const list = ["hello", "hello", "hello"];
 const ladies = [
@@ -431,6 +437,8 @@ export const Navbar = () => {
   const toast = useToast();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+  const { isAuth } = useSelector((store) => store.authReducer);
+  // function for login user
   const handleSignIn = () => {
     if (email == "" || pass == "") {
       toast({
@@ -462,6 +470,19 @@ export const Navbar = () => {
         });
     }
   };
+
+  // function for signOut
+  const signOut = () => {
+    dispatch(signOutReq());
+    dispatch(signOutSuccess());
+    toast({
+      title: "Sign out successfully",
+      status: "success",
+      duration: 1000,
+      isClosable: true,
+    });
+  };
+
   return (
     <div className={styles.navbar_box}>
       <div className={styles.nav}>
@@ -483,69 +504,119 @@ export const Navbar = () => {
             </Link>
           </div>
           <div>
-            <Flex alignItems={"center"} onClick={onOpen}>
-              <CiUser fontSize={"24px"} />
-              <Text className={styles.navbar_box_1_text}>Sign In</Text>
-            </Flex>
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent borderRadius={"0"} background="var(--color-bg)">
-                <ModalHeader>Sign In</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Text>
-                    Become a member — don’t miss out on deals, offers, discounts
-                    and bonus vouchers.
-                  </Text>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={"400"} marginTop="14px">
-                      Email
-                    </FormLabel>
-                    <Input
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      type="email"
-                      borderRadius={"0"}
-                      focusBorderColor="green.400"
-                      colorScheme={"green"}
-                    />
-                    <FormHelperText>
-                      We'll never share your email.
-                    </FormHelperText>
-                    <FormLabel fontWeight={"400"} marginTop="14px">
-                      Password
-                    </FormLabel>
-                    <InputGroup>
-                      <Input
-                        value={pass}
-                        onChange={(e) => setPass(e.target.value)}
-                        type={show ? "text" : "password"}
-                        borderRadius={"0"}
-                        focusBorderColor="green.400"
-                        colorScheme={"green"}
-                      />
-                      <InputRightElement width="4.5rem">
-                        <Text size="sm" onClick={handleClick} cursor="pointer">
-                          {show ? "Hide" : "Show"}
-                        </Text>
-                      </InputRightElement>
-                    </InputGroup>
-                  </FormControl>
-                </ModalBody>
-
-                <ModalFooter>
-                  <Button
-                    colorScheme={"blackAlpha"}
-                    background="var(--text-color)"
-                    width={"100%"}
-                    borderRadius="0"
-                    onClick={handleSignIn}
+            {isAuth ? (
+              <>
+                <Menu isLazy>
+                  <MenuButton>
+                    <Flex alignItems={"center"} onClick={onOpen}>
+                      <CiUser fontSize={"24px"} />
+                      <Text className={styles.navbar_box_1_text}>
+                        My Account
+                      </Text>
+                    </Flex>
+                  </MenuButton>
+                  <MenuList
+                    borderRadius={"0"}
+                    display={"flex"}
+                    flexDirection="column"
+                    justifyContent={"flex-start"}
+                    alignItems="flex-start"
                   >
-                    Sign In
-                  </Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
+                    {/* MenuItems are not rendered unless Menu is open */}
+                    <Text
+                      float={"left"}
+                      fontWeight="500"
+                      _hover={{ textDecoration: "underline" }}
+                      cursor="pointer"
+                      padding={"10px"}
+                      paddingLeft="25px"
+                    >
+                      My Account{" "}
+                    </Text>
+                    <Text
+                      cursor="pointer"
+                      paddingLeft="25px"
+                      fontSize={"sm"}
+                      _hover={{ textDecoration: "underline" }}
+                      color="GrayText"
+                      onClick={signOut}
+                    >
+                      Sign out
+                    </Text>
+                  </MenuList>
+                </Menu>
+              </>
+            ) : (
+              <>
+                <Flex alignItems={"center"} onClick={onOpen}>
+                  <CiUser fontSize={"24px"} />
+                  <Text className={styles.navbar_box_1_text}>Sign In</Text>
+                </Flex>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent borderRadius={"0"} background="var(--color-bg)">
+                    <ModalHeader>Sign In</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Text>
+                        Become a member — don’t miss out on deals, offers,
+                        discounts and bonus vouchers.
+                      </Text>
+                      <FormControl isRequired>
+                        <FormLabel fontWeight={"400"} marginTop="14px">
+                          Email
+                        </FormLabel>
+                        <Input
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          type="email"
+                          borderRadius={"0"}
+                          focusBorderColor="green.400"
+                          colorScheme={"green"}
+                        />
+                        <FormHelperText>
+                          We'll never share your email.
+                        </FormHelperText>
+                        <FormLabel fontWeight={"400"} marginTop="14px">
+                          Password
+                        </FormLabel>
+                        <InputGroup>
+                          <Input
+                            value={pass}
+                            onChange={(e) => setPass(e.target.value)}
+                            type={show ? "text" : "password"}
+                            borderRadius={"0"}
+                            focusBorderColor="green.400"
+                            colorScheme={"green"}
+                          />
+                          <InputRightElement width="4.5rem">
+                            <Text
+                              size="sm"
+                              onClick={handleClick}
+                              cursor="pointer"
+                            >
+                              {show ? "Hide" : "Show"}
+                            </Text>
+                          </InputRightElement>
+                        </InputGroup>
+                      </FormControl>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <Button
+                        colorScheme={"blackAlpha"}
+                        background="var(--text-color)"
+                        width={"100%"}
+                        borderRadius="0"
+                        onClick={handleSignIn}
+                      >
+                        Sign In
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </>
+            )}
             <Flex alignItems={"center"}>
               <CiHeart fontSize={"24px"} />
               <Text className={styles.navbar_box_1_text}>Favourites</Text>

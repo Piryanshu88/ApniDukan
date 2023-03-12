@@ -5,7 +5,7 @@ const intialData = {
   isLoading: false,
   isAuth: loadData("hm_auth") || false,
   isError: false,
-  token: "",
+  token: loadData("hm_token") || "",
 };
 //console.log(intialData);
 export const reducer = (state = intialData, { type, payload }: UserAction) => {
@@ -39,6 +39,7 @@ export const reducer = (state = intialData, { type, payload }: UserAction) => {
         ...state,
         isAuth: true,
         isLoading: false,
+        token: payload.token,
       };
     case types.LOGIN_ERROR:
       return {
