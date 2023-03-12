@@ -9,7 +9,7 @@ const intialData = {
 };
 //console.log(intialData);
 export const reducer = (state = intialData, { type, payload }: UserAction) => {
-  // console.log(type, payload);
+  console.log(type, payload);
   switch (type) {
     case types.SIGN_UP_REQ:
       return {

@@ -1,5 +1,5 @@
 import * as types from "./actionTypes";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { User, UserPayload } from "../../constants";
 const signUpReq = () => {
   return {

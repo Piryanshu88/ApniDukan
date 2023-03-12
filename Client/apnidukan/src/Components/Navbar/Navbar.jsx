@@ -11,6 +11,7 @@ import {
   InputLeftElement,
   InputRightElement,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
@@ -31,6 +32,12 @@ import {
 } from "@chakra-ui/react";
 import { NavbarSec } from "./NavbarItems";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  login,
+  loginError,
+  loginSuccess,
+} from "../../redux/authReducer/action";
 const list = ["hello", "hello", "hello"];
 const ladies = [
   {
@@ -420,9 +427,41 @@ export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const dispatch = useDispatch();
+  const toast = useToast();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
-  const handleSignIn = () => {};
+  const handleSignIn = () => {
+    if (email == "" || pass == "") {
+      toast({
+        title: "Please fill all the credentials",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    } else {
+      dispatch(login({ email: email, password: pass }))
+        .then((re) => {
+          dispatch(loginSuccess(re.data));
+          toast({
+            title: "user login Successfully",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+          onClose();
+        })
+        .catch((err) => {
+          dispatch(loginError());
+          toast({
+            title: "Oops, Check your credentials again",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        });
+    }
+  };
   return (
     <div className={styles.navbar_box}>
       <div className={styles.nav}>
@@ -448,7 +487,7 @@ export const Navbar = () => {
               <CiUser fontSize={"24px"} />
               <Text className={styles.navbar_box_1_text}>Sign In</Text>
             </Flex>
-            <Modal isOpen={true} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
               <ModalContent borderRadius={"0"} background="var(--color-bg)">
                 <ModalHeader>Sign In</ModalHeader>
