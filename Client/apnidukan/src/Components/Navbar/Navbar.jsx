@@ -35,7 +35,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { NavbarSec } from "./NavbarItems";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   login,
@@ -438,6 +438,7 @@ export const Navbar = () => {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   const { isAuth } = useSelector((store) => store.authReducer);
+  const navigate = useNavigate();
   // function for login user
   const handleSignIn = () => {
     if (email == "" || pass == "") {
@@ -483,6 +484,11 @@ export const Navbar = () => {
     });
   };
 
+  // function for go to sign up page
+  const goToSignUp = () => {
+    onClose();
+    navigate("/signup");
+  };
   return (
     <div className={styles.navbar_box}>
       <div className={styles.nav}>
@@ -516,6 +522,8 @@ export const Navbar = () => {
                     </Flex>
                   </MenuButton>
                   <MenuList
+                    boxShadow="0 2px 4px 0 rgb(34 34 34 / 20%)"
+                    background={"var(--color-bg)"}
                     borderRadius={"0"}
                     display={"flex"}
                     flexDirection="column"
@@ -540,6 +548,7 @@ export const Navbar = () => {
                       _hover={{ textDecoration: "underline" }}
                       color="GrayText"
                       onClick={signOut}
+                      marginBottom="10px"
                     >
                       Sign out
                     </Text>
@@ -600,6 +609,16 @@ export const Navbar = () => {
                           </InputRightElement>
                         </InputGroup>
                       </FormControl>
+
+                      <Text
+                        color={"GrayText"}
+                        _hover={{ textDecoration: "underline" }}
+                        cursor="pointer"
+                        marginTop={"10px"}
+                        onClick={goToSignUp}
+                      >
+                        Not a member yet? Join here!
+                      </Text>
                     </ModalBody>
 
                     <ModalFooter>

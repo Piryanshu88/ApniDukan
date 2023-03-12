@@ -1,0 +1,25 @@
+.signup_box {
+  margin-top: 30px;
+}
+.signup_form_box {
+  width: 30%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+@media all and (min-width: 640px) and (max-width: 1024px) {
+  .signup_form_box {
+    width: 50%;
+    margin-top: 30px;
+  }
+}
+
+/* for mobile screens */
+@media all and (min-width: 324px) and (max-width: 640px) {
+  .signup_form_box {
+    width: 100%;
+  }
+  .signup_box {
+    width: 90%;
+    margin: auto;
+  }
+}
