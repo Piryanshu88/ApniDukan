@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import axios from "axios";
+import { User, UserPayload } from "../../constants";
 const signUpReq = () => {
   return {
     type: types.SIGN_UP_REQ,
@@ -20,7 +21,7 @@ const loginReq = () => {
     type: types.LOGIN_REQ,
   };
 };
-const loginSuccess = (user: string) => {
+const loginSuccess = (user: UserPayload) => {
   return {
     type: types.LOGIN_SUCCESS,
     payload: user,
@@ -45,4 +46,12 @@ const signOutErr = () => {
   return {
     type: types.SIGN_OUT_ERR,
   };
+};
+
+const login = (payload: User) => (dispatch: any) => {
+  dispatch(loginReq());
+  return axios.post(
+    `https://rich-erin-walkingstick-hem.cyclic.app/user/login`,
+    payload
+  );
 };

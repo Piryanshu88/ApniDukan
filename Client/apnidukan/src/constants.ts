@@ -46,3 +46,23 @@ export type ActionPayload = {
   type: string;
   payload: DataPayload;
 };
+
+export type User = {
+  _id?: string;
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  gender?: string;
+  password: string;
+};
+export type UserPayload = {
+  message: string;
+  token: string;
+  status: string;
+  data: User;
+};
+
+export type UserAction = {
+  type: string;
+  payload: UserPayload;
+};
