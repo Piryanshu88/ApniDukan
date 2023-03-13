@@ -55,6 +55,7 @@ const login = (payload: User) => (dispatch: any) => {
     payload
   );
 };
+
 const signup = (payload: User) => (dispatch: any) => {
   dispatch(signUpReq());
   return axios.post(
