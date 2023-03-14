@@ -89,6 +89,7 @@ export const SingleProComp = () => {
       );
       setLoading(false);
     }, 4000);
+    console.log(products);
   }, [articleCode]);
 
   if (isError) {
