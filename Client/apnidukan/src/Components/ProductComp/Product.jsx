@@ -102,7 +102,7 @@ export const Product = () => {
       <div className={styles.products_card_box}>
         {products?.map((el, i) => {
           return (
-            <Link to={`/singleproduct/${el.articleCode}`}>
+            <Link to={`/singleproduct/${el.articleCode}/${category}`}>
               <ProductCard {...el} key={i} />
             </Link>
           );

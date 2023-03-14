@@ -94,14 +94,23 @@
   grid-template-columns: repeat(2, 49.6%);
   gap: 7px;
 }
+
+.style_with_scroll {
+  
+  padding: 10px;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+}
+
 @media all and (min-width: 640px) and (max-width: 1024px) {
   /* .single_page_details {
     display: none;
   } */
-  
-.composition_box{
-  padding: 50px ;
-}
+
+  .composition_box {
+    padding: 50px;
+  }
 }
 
 /* for mobile screens */

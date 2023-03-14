@@ -10,7 +10,7 @@ export const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
-        path="/singleproduct/:articleCode"
+        path="/singleproduct/:articleCode/:category"
         element={<SingleProductPage />}
       />
       <Route path="/signup" element={<SignUpPage />} />

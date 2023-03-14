@@ -73,12 +73,13 @@ var settings = {
   ),
 };
 
-export const Scroller = ({ data }) => {
+export const Scroller = (props) => {
+  const { data, c } = props;
   return (
     <div>
       <Slider {...settings}>
         {data?.map((item, i) => (
-          <Link to={`/singleproduct/${item._id}`}>
+          <Link to={`/singleproduct/${item.articleCode}/${c}`}>
             <Stack
               key={i}
               m="5px"

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { GrStar } from "react-icons/gr";
+import { CiCircleInfo } from "react-icons/ci";
 import {
   getDataById,
   getDataByIdApi,
@@ -12,8 +13,19 @@ import {
 import styles from "./SingleProduct.module.css";
 import { ProDucts } from "../../constants";
 import { CiBag1 } from "react-icons/ci";
+import axios from "axios";
+import { Scroller } from "../Home/Categories/Scroller";
+
+const getData = async (str) => {
+  const response = await axios.get(
+    `https://rich-erin-walkingstick-hem.cyclic.app/products/${str}`
+  );
+  return response.data;
+};
+
 export const SingleProComp = () => {
-  const { articleCode } = useParams();
+  const { articleCode, category } = useParams();
+  const [scrollerData, setScrollData] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -34,6 +46,10 @@ export const SingleProComp = () => {
         dispatch(getDataSuccessById(re?.data?.product));
       })
       .catch((err) => dispatch(getDataErrorById()));
+
+    getData(category).then((re) => {
+      setScrollData(re.data);
+    });
 
     setTimeout(() => {
       setArticle(
@@ -158,7 +174,18 @@ export const SingleProComp = () => {
               Add to Cart
             </Button>
           </div>
+          <Text display={"flex"} gap="10px" alignItems={"center"}>
+            <CiCircleInfo />
+            Standard delivery in 2-7 days
+          </Text>
+          <Text fontWeight={"500"}>Delivery and Payment</Text>
         </div>
+      </div>
+      <div className={styles.style_with_scroll}>
+        <Text textAlign={"left"} fontWeight="500">
+          Style with
+        </Text>
+        <Scroller data={scrollerData} c={category} />
       </div>
     </div>
   );
