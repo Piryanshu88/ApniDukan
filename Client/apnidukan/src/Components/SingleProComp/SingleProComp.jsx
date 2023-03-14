@@ -24,7 +24,7 @@ export const SingleProComp = () => {
   );
 
   const ChangeActiveArticle = (code) => {
-    console.log(searchParams);
+    navigate(`/singleproduct/${code}`);
   };
 
   useEffect(() => {
@@ -34,9 +34,11 @@ export const SingleProComp = () => {
         dispatch(getDataSuccessById(re?.data?.product));
       })
       .catch((err) => dispatch(getDataErrorById()));
-    let art = products?.articlesList?.filter((el) => el?.code == articleCode);
-    setArticle(art[0]);
+
     setTimeout(() => {
+      setArticle(
+        products?.articlesList?.filter((el) => el?.code == articleCode)[0]
+      );
       setLoading(false);
     }, 4000);
   }, [articleCode]);
@@ -53,8 +55,20 @@ export const SingleProComp = () => {
       <div className={styles.singlepage}>
         <div>
           <div className={styles.img_box}>
-            <Image src={article?.galleryDetails[0]?.baseUrl} />
-            <Image src={article?.galleryDetails[1]?.baseUrl} />
+            <Image
+              src={
+                products?.articlesList?.filter(
+                  (el) => el?.code == articleCode
+                )[0]?.galleryDetails[0]?.baseUrl
+              }
+            />
+            <Image
+              src={
+                products?.articlesList?.filter(
+                  (el) => el?.code == articleCode
+                )[0]?.galleryDetails[1]?.baseUrl
+              }
+            />
           </div>
           <div className={styles.composition_box}>
             <Text>{products?.description}</Text>
@@ -83,9 +97,12 @@ export const SingleProComp = () => {
           </div>
 
           <div className={styles.gallary_img}>
-            {article?.galleryDetails?.splice(0, 6)?.map((el) => {
-              return <Image src={el?.baseUrl} />;
-            })}
+            {products?.articlesList
+              ?.filter((el) => el?.code == articleCode)[0]
+              ?.galleryDetails?.splice(0, 6)
+              ?.map((el) => {
+                return <Image src={el?.baseUrl} />;
+              })}
           </div>
         </div>
 
