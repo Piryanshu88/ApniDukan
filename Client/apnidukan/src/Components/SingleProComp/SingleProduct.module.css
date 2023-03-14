@@ -94,9 +94,11 @@
   grid-template-columns: repeat(2, 49.6%);
   gap: 7px;
 }
+.single_page_details_mobile {
+  display: none;
+}
 
 .style_with_scroll {
-  
   padding: 10px;
   width: 80%;
   margin: auto;
@@ -117,5 +119,39 @@
 @media all and (min-width: 324px) and (max-width: 640px) {
   .single_page_details {
     display: none;
+  }
+  .style_with_scroll {
+    width: 100%;
+  }
+  .composition_box {
+    padding: 10px;
+  }
+  .single_page_details_mobile {
+    display: flex;
+    flex-direction: column;
+    line-height: 3rem;
+    align-items: flex-start;
+  }
+  .single_page_details_mobile > p:nth-child(1) {
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--text-color);
+  }
+  .single_page_details_mobile > p:nth-child(2) {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  .single_page_details_mobile > p:nth-child(3) {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  .img_box > img:nth-child(1) {
+    display: none;
+  }
+  .img_box > img {
+    width: 100%;
   }
 }

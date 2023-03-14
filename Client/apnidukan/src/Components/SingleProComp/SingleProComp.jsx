@@ -36,7 +36,7 @@ export const SingleProComp = () => {
   );
 
   const ChangeActiveArticle = (code) => {
-    navigate(`/singleproduct/${code}`);
+    navigate(`/singleproduct/${code}/${category}`);
   };
 
   useEffect(() => {
@@ -86,6 +86,46 @@ export const SingleProComp = () => {
               }
             />
           </div>
+
+          {/* only for mobile */}
+          <div className={styles.single_page_details_mobile}>
+            <Text>{products?.name}</Text>
+            <Text>{`Rs. ${products?.whitePrice?.price}.00`}</Text>
+            <Text>{products?.color?.text}</Text>
+            <div className={styles.color_article}>
+              {products?.articlesList?.splice(0, 4).map((el, i) => {
+                return (
+                  <Image
+                    src={el?.galleryDetails[0]?.baseUrl}
+                    key={i}
+                    height="100px"
+                    objectFit={"contain"}
+                    padding="2px"
+                    border={
+                      articleCode == el?.code
+                        ? "1px solid var(--text-color)"
+                        : null
+                    }
+                    onClick={() => ChangeActiveArticle(el.code)}
+                  />
+                );
+              })}
+            </div>
+            <div className={styles.review_box}>
+              <Text>REVIEWS (5)</Text>
+              <GrStar />
+              <GrStar />
+              <GrStar />
+              <GrStar />
+              <GrStar />
+            </div>
+            <Text display={"flex"} gap="10px" alignItems={"center"}>
+              <CiCircleInfo />
+              Standard delivery in 2-7 days
+            </Text>
+            <Text fontWeight={"500"}>Delivery and Payment</Text>
+          </div>
+
           <div className={styles.composition_box}>
             <Text>{products?.description}</Text>
             <Text
@@ -182,7 +222,7 @@ export const SingleProComp = () => {
         </div>
       </div>
       <div className={styles.style_with_scroll}>
-        <Text textAlign={"left"} fontWeight="500">
+        <Text textAlign={"left"} fontWeight="500" fontSize={"20px"}>
           Style with
         </Text>
         <Scroller data={scrollerData} c={category} />
