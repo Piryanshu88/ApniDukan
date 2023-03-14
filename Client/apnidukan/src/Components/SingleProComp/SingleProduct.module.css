@@ -104,6 +104,9 @@
   margin: auto;
   margin-top: 20px;
 }
+.mobile_add_to_cart_btn {
+  display: none;
+}
 
 @media all and (min-width: 640px) and (max-width: 1024px) {
   /* .single_page_details {
@@ -153,5 +156,23 @@
   }
   .img_box > img {
     width: 100%;
+  }
+  .mobile_add_to_cart_btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: var(--color-bg);
+    padding: 10px;
+  }
+  .add_to_cart_box {
+    margin-top: 0px;
+  }
+  .size_box {
+    margin-top: 0px;
   }
 }

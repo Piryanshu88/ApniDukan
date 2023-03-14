@@ -221,6 +221,31 @@ export const SingleProComp = () => {
           <Text fontWeight={"500"}>Delivery and Payment</Text>
         </div>
       </div>
+
+      {/* mobile add to cart */}
+      <div className={styles.mobile_add_to_cart_btn}>
+        <div className={styles.size_box}>
+          <Select placeholder="Select Size" borderRadius={"0"}>
+            <option value="option1">S</option>
+            <option value="option2"> M</option>
+            <option value="option3"> L</option>
+          </Select>
+        </div>
+        <div className={styles.add_to_cart_box}>
+          <Button
+            borderRadius={"0"}
+            colorScheme="blackAlpha"
+            width={"100%"}
+            display="flex"
+            alignItems={"center"}
+            background="var(--text-color)"
+            gap={"10px"}
+          >
+            <CiBag1 />
+            Add to Cart
+          </Button>
+        </div>
+      </div>
       <div className={styles.style_with_scroll}>
         <Text textAlign={"left"} fontWeight="500" fontSize={"20px"}>
           Style with
