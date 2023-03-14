@@ -1,4 +1,14 @@
-import { Button, Image, Select, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Image,
+  Select,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
@@ -15,6 +25,7 @@ import { ProDucts } from "../../constants";
 import { CiBag1 } from "react-icons/ci";
 import axios from "axios";
 import { Scroller } from "../Home/Categories/Scroller";
+import { CustomToast } from "./CustomToast";
 
 const getData = async (str) => {
   const response = await axios.get(
@@ -31,12 +42,33 @@ export const SingleProComp = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
+  const toast = useToast();
   const { products, isLoading, isError } = useSelector(
     (store) => store.singleDataReducer
   );
+  const [cartToast, setCartToast] = useState("none");
+  const { isAuth } = useSelector((store) => store.authReducer);
 
   const ChangeActiveArticle = (code) => {
     navigate(`/singleproduct/${code}/${category}`);
+  };
+
+  const handleAddToCart = () => {
+    if (!isAuth) {
+      toast({
+        title: "Please Login First",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+    toast({
+      title: "Add to cart Successfully",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   useEffect(() => {
@@ -209,6 +241,7 @@ export const SingleProComp = () => {
               alignItems={"center"}
               background="var(--text-color)"
               gap={"10px"}
+              onClick={handleAddToCart}
             >
               <CiBag1 />
               Add to Cart
@@ -240,6 +273,7 @@ export const SingleProComp = () => {
             alignItems={"center"}
             background="var(--text-color)"
             gap={"10px"}
+            onClick={handleAddToCart}
           >
             <CiBag1 />
             Add to Cart
