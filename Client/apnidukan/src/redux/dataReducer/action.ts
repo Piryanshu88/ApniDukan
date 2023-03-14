@@ -49,14 +49,14 @@ const getCategoryData =
     );
   };
 
-const getDataByIdApi = (id: string) => (dispatch: any) => {
+const getDataByIdApi = (articleCode: string) => (dispatch: any) => {
   dispatch(getDataReqById());
   const options = {
     method: "GET",
     url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail",
-    params: { lang: "en", country: "in", productcode: id },
+    params: { lang: "en", country: "in", productcode: articleCode },
     headers: {
-      "X-RapidAPI-Key": "673350cdfdmsh46e0b62adddf144p1d768bjsn3d8878c91b82",
+      "X-RapidAPI-Key": "5735999d10msh3200276fa85f0e5p13992ajsn22063bf28982",
       "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
     },
   };
@@ -67,4 +67,4 @@ const getDataById = (id: string) => (dispatch: any) => {
   dispatch(getDataReqById());
   return axios.get(``);
 };
-export { getCategoryData, getDataById };
+export { getCategoryData, getDataByIdApi };

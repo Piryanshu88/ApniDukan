@@ -1,10 +1,11 @@
 import { Button, Image, Select, Text, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { GrStar } from "react-icons/gr";
 import {
   getDataById,
+  getDataByIdApi,
   getDataErrorById,
   getDataSuccessById,
 } from "../../redux/dataReducer/action";
@@ -12,24 +13,33 @@ import styles from "./SingleProduct.module.css";
 import { ProDucts } from "../../constants";
 import { CiBag1 } from "react-icons/ci";
 export const SingleProComp = () => {
-  const { id, category } = useParams();
+  const { articleCode } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const { products, isLoading, isError } = useSelector(
     (store) => store.singleDataReducer
   );
+
+  const ChangeActiveArticle = (code) => {
+    console.log(searchParams);
+  };
+
   useEffect(() => {
     setLoading(true);
-    dispatch(getDataById(id, category))
+    dispatch(getDataByIdApi(articleCode))
       .then((re) => {
-        dispatch(getDataSuccessById(re.data.product));
+        dispatch(getDataSuccessById(re?.data?.product));
       })
       .catch((err) => dispatch(getDataErrorById()));
+    let art = products?.articlesList?.filter((el) => el?.code == articleCode);
+    setArticle(art[0]);
     setTimeout(() => {
       setLoading(false);
     }, 4000);
-  }, [id]);
+  }, [articleCode]);
 
   if (isError) {
     return <Text>error</Text>;
@@ -43,15 +53,25 @@ export const SingleProComp = () => {
       <div className={styles.singlepage}>
         <div>
           <div className={styles.img_box}>
-            <Image src={""} />
-            <Image src={""} />
+            <Image src={article?.galleryDetails[0]?.baseUrl} />
+            <Image src={article?.galleryDetails[1]?.baseUrl} />
           </div>
           <div className={styles.composition_box}>
             <Text>{products?.description}</Text>
-            <Text fontWeight={"500"}>{`Composition`}</Text>
+            <Text
+              fontWeight={"500"}
+              textDecoration="underline"
+            >{`Composition`}</Text>
             <div>
               {products?.materialDetails?.map((el, i) => {
-                return <Text>{`${el?.name} ― ${el?.description}`}</Text>;
+                return (
+                  <Text>
+                    <Text as={"span"} fontWeight="500">
+                      {el?.name}
+                    </Text>{" "}
+                    - {el?.description}
+                  </Text>
+                );
               })}
             </div>
             <Text>
@@ -63,12 +83,9 @@ export const SingleProComp = () => {
           </div>
 
           <div className={styles.gallary_img}>
-            {/* {products?.articlesList
-              ?.filter((el) => articleCode == el.code)[0]
-              .galleryDetails?.splice(0, 4)
-              .map((el) => {
-                return <Image src={el?.src} />;
-              })} */}
+            {article?.galleryDetails?.splice(0, 6)?.map((el) => {
+              return <Image src={el?.baseUrl} />;
+            })}
           </div>
         </div>
 
@@ -77,7 +94,7 @@ export const SingleProComp = () => {
           <Text>{`Rs. ${products?.whitePrice?.price}.00`}</Text>
           <Text>{products?.color?.text}</Text>
           <div className={styles.color_article}>
-            {/* {products?.articlesList?.splice(0, 4).map((el, i) => {
+            {products?.articlesList?.splice(0, 4).map((el, i) => {
               return (
                 <Image
                   src={el?.galleryDetails[0]?.baseUrl}
@@ -86,14 +103,14 @@ export const SingleProComp = () => {
                   objectFit={"contain"}
                   padding="2px"
                   border={
-                    articleCode == el.code
+                    articleCode == el?.code
                       ? "1px solid var(--text-color)"
                       : null
                   }
-                  onClick={() => handleArticle(el?.code)}
+                  onClick={() => ChangeActiveArticle(el.code)}
                 />
               );
-            })} */}
+            })}
           </div>
           <div className={styles.review_box}>
             <Text>REVIEWS (5)</Text>
