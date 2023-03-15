@@ -254,7 +254,7 @@ export const HomeComp = () => {
           </Text>
         </div>
         <div className={styles.new_arrivals_slider}>
-          <Scroller data={arrivalData} c={activeArrival}  />
+          <Scroller data={arrivalData} c={activeArrival} />
         </div>
       </div>
 

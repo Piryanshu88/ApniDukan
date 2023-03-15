@@ -1,4 +1,4 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Skeleton, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import {
   Menu,
@@ -29,9 +29,14 @@ export const Product = () => {
   const { isError, products, totalCount } = useSelector(
     (store) => store.dataReducer
   );
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     setSearchParams({ sort: sort });
     console.log("use", sort);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     if (sort == "recommended") {
       dispatch(getCategoryData(category, ""))
         .then((re) => dispatch(getDataSuccess(re.data)))
@@ -41,8 +46,12 @@ export const Product = () => {
 
   const sortBylow = (q, p) => {
     setSort(q);
+    setLoading(true);
     console.log("sort", sort);
     setSearchParams({ sort: sort });
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     dispatch(getCategoryData(category, p))
       .then((re) => dispatch(getDataSuccess(re.data)))
       .catch((err) => dispatch(getDataError()));
@@ -52,6 +61,7 @@ export const Product = () => {
       background: "var(--bg-color)",
     };
   };
+
   if (isError) {
     return <div>Error</div>;
   }
@@ -101,7 +111,13 @@ export const Product = () => {
       </div>
       <div className={styles.products_card_box}>
         {products?.map((el, i) => {
-          return (
+          return loading ? (
+            <Stack>
+              <Skeleton height="300px" />
+              <Skeleton height="20px" />
+              <Skeleton height="10px" />
+            </Stack>
+          ) : (
             <Link to={`/singleproduct/${el.articleCode}/${category}`}>
               <ProductCard {...el} key={i} />
             </Link>
