@@ -27,6 +27,11 @@ import { CiBag1 } from "react-icons/ci";
 import axios from "axios";
 import { Scroller } from "../Home/Categories/Scroller";
 import { CustomToast } from "./CustomToast";
+import {
+  addCartData,
+  AddDataErr,
+  AddDataSuccess,
+} from "../../redux/cartReducer/action";
 
 const getData = async (str) => {
   const response = await axios.get(
@@ -64,12 +69,21 @@ export const SingleProComp = () => {
       });
       return;
     }
-    toast({
-      title: "Add to cart Successfully",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+    dispatch(addCartData(products))
+      .then((re) => {
+        console.log(re.data);
+        dispatch(AddDataSuccess());
+        toast({
+          title: "Add to cart Successfully",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(AddDataErr());
+      });
   };
 
   useEffect(() => {

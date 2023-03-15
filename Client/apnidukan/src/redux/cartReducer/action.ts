@@ -34,12 +34,12 @@ export const delDataErr = () => {
   };
 };
 
-const AddDataReq = () => {
+export const AddDataReq = () => {
   return {
     type: types.ADD_CART_REQ,
   };
 };
-const AddDataSuccess = () => {
+export const AddDataSuccess = () => {
   return {
     type: types.ADD_CART_SUCCESS,
   };
@@ -62,7 +62,7 @@ const getCartData = () => (dispatch: any) => {
 const addCartData = (payload: any) => (disptach: any) => {
   disptach(AddDataReq());
   return axios.post(
-    "https://rich-erin-walkingstick-hem.cyclic.app/cart",
+    "https://rich-erin-walkingstick-hem.cyclic.app/cart/add",
     payload,
     {
       headers: {

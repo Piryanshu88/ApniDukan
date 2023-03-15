@@ -21,6 +21,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use(express.bodyParser({ limit: "50mb" }));
 app.get("/", (req, res) => {
   res.send("This is the home page of HM clone ");
 });
