@@ -50,6 +50,7 @@ export const AddDataErr = () => {
   };
 };
 
+
 const getCartData = () => (dispatch: any) => {
   dispatch(getDataReq());
   return axios.get("https://rich-erin-walkingstick-hem.cyclic.app/cart", {
@@ -58,6 +59,8 @@ const getCartData = () => (dispatch: any) => {
     },
   });
 };
+
+
 
 const addCartData = (payload: any) => (disptach: any) => {
   disptach(AddDataReq());

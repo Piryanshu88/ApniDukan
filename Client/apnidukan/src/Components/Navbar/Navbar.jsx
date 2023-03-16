@@ -17,7 +17,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 import logo from "../../assets/logohm.png";
 
@@ -44,6 +44,11 @@ import {
   signOutReq,
   signOutSuccess,
 } from "../../redux/authReducer/action";
+import {
+  getCartData,
+  getDataError,
+  getDataSuccess,
+} from "../../redux/cartReducer/action";
 const list = ["hello", "hello", "hello"];
 const ladies = [
   {
@@ -439,6 +444,7 @@ export const Navbar = () => {
   const handleClick = () => setShow(!show);
   const { isAuth } = useSelector((store) => store.authReducer);
   const navigate = useNavigate();
+  const { carts } = useSelector((store) => store.cartReducer);
   // function for login user
   const handleSignIn = () => {
     if (email == "" || pass == "") {
@@ -489,6 +495,16 @@ export const Navbar = () => {
     onClose();
     navigate("/signup");
   };
+  useEffect(() => {
+    dispatch(getCartData())
+      .then((re) => {
+        dispatch(getDataSuccess(re.data));
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(getDataError());
+      });
+  }, []);
   return (
     <div className={styles.navbar_box}>
       <div className={styles.nav}>
@@ -643,10 +659,14 @@ export const Navbar = () => {
             <Flex alignItems={"center"} className={styles.mobile_search}>
               <CiSearch fontSize={"24px"} />
             </Flex>
-            <Flex alignItems={"center"}>
-              <CiBag1 fontSize={"24px"} />
-              <Text className={styles.navbar_box_1_text}>Shopping Bag(0)</Text>
-            </Flex>
+            <Link to="/cart">
+              <Flex alignItems={"center"}>
+                <CiBag1 fontSize={"24px"} />
+                <Text className={styles.navbar_box_1_text}>
+                  Shopping Bag({carts?.length || 0})
+                </Text>
+              </Flex>
+            </Link>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ export const reducer = (state = intialData, { type, payload }: any) => {
       return {
         ...state,
         isLoading: false,
-        carts: payload,
+        carts: payload.data,
       };
     case types.GET_CART_ERROR:
       return {

@@ -31,6 +31,9 @@ import {
   addCartData,
   AddDataErr,
   AddDataSuccess,
+  getCartData,
+  getDataError,
+  getDataSuccess,
 } from "../../redux/cartReducer/action";
 
 const getData = async (str) => {
@@ -130,6 +133,15 @@ export const SingleProComp = () => {
           duration: 3000,
           isClosable: true,
         });
+        dispatch(getCartData())
+          .then((re) => {
+            console.log(re.data);
+            dispatch(getDataSuccess(re.data));
+          })
+          .catch((err) => {
+            console.log(err.message);
+            dispatch(getDataError());
+          });
       })
       .catch((err) => {
         console.log(err.message);
