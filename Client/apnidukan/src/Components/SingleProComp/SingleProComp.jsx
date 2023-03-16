@@ -69,7 +69,58 @@ export const SingleProComp = () => {
       });
       return;
     }
-    dispatch(addCartData(products))
+    const {
+      code,
+      name,
+      description,
+      sapProductName,
+      color,
+      whitePrice,
+      importedBy,
+      importedDate,
+      netQuantity,
+      countryOfProduction,
+      productTypeName,
+      fits,
+      constructionDescr,
+      customerGroup,
+      rootCategoryPath,
+      productKey,
+      productCountryOfProduction,
+      showGarmentsInfo,
+      yearOfProduction,
+      presentationTypes,
+      multipack,
+      newProduct,
+    } = products;
+    dispatch(
+      addCartData({
+        code,
+        name,
+        description,
+        sapProductName,
+        color,
+        img: products?.articlesList?.filter((el) => el?.code == articleCode)[0]
+          ?.galleryDetails[0]?.baseUrl,
+        whitePrice,
+        importedBy,
+        importedDate,
+        netQuantity,
+        countryOfProduction,
+        productTypeName,
+        fits,
+        constructionDescr,
+        customerGroup,
+        rootCategoryPath,
+        productKey,
+        productCountryOfProduction,
+        showGarmentsInfo,
+        yearOfProduction,
+        presentationTypes,
+        multipack,
+        newProduct,
+      })
+    )
       .then((re) => {
         console.log(re.data);
         dispatch(AddDataSuccess());

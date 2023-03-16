@@ -56,7 +56,7 @@ const getDataByIdApi = (articleCode: string) => (dispatch: any) => {
     url: "https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/detail",
     params: { lang: "en", country: "in", productcode: articleCode },
     headers: {
-      "X-RapidAPI-Key": "5735999d10msh3200276fa85f0e5p13992ajsn22063bf28982",
+      "X-RapidAPI-Key": "a25fe9a895msh8bdb8ffc38b49a0p1795d0jsn5ed63ba8e66e",
       "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
     },
   };
