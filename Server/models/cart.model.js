@@ -24,6 +24,7 @@ const cartSchema = mongoose.Schema({
   multipack: Boolean,
   newProduct: Boolean,
   authorID: String,
+  img: String,
   quantity: { type: Number, default: 1 },
 });
 
