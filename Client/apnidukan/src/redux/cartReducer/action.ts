@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import axios, { AxiosHeaders } from "axios";
-import { saveData } from "../../utils/accesslocalStorage";
+import { loadData, saveData } from "../../utils/accesslocalStorage";
 export const getDataReq = () => {
   return {
     type: types.GET_CART_REQ,
@@ -54,7 +54,7 @@ const getCartData = () => (dispatch: any) => {
   dispatch(getDataReq());
   return axios.get("https://rich-erin-walkingstick-hem.cyclic.app/cart", {
     headers: {
-      Authorization: localStorage.getItem("hm_token"),
+      Authorization: loadData("hm_token"),
     },
   });
 };
@@ -66,7 +66,7 @@ const addCartData = (payload: any) => (disptach: any) => {
     payload,
     {
       headers: {
-        Authorization: localStorage.getItem("hm_token"),
+        Authorization: loadData("hm_token"),
       },
     }
   );
