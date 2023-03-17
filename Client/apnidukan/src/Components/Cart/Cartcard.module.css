@@ -1,0 +1,9 @@
+.cart_card {
+  display: flex;
+}
+.cart_card > div:nth-child(1) {
+  flex: 1;
+}
+.cart_card > div:nth-child(2) {
+  flex: 2;
+}
