@@ -2,7 +2,14 @@ import { Image, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "./Cartcard.module.css";
 import { RiDeleteBin5Line } from "react-icons/ri";
-export const Cartcard = ({ code, img, name, whitePrice, fits }) => {
+export const Cartcard = ({
+  countryOfProduction,
+  code,
+  img,
+  name,
+  whitePrice,
+  fits,
+}) => {
   return (
     <div className={styles.cart_card}>
       <div>
@@ -23,10 +30,8 @@ export const Cartcard = ({ code, img, name, whitePrice, fits }) => {
           <Text>:</Text>
           <Text>OneSize</Text>
         </div>
-        <div className={styles.fits_box}>
-          {fits?.map((el) => {
-            return <Text>{el}</Text>;
-          })}
+        <div className={styles.cart_comp_last}>
+          <div>Made in {countryOfProduction}</div>
         </div>
       </div>
 

@@ -37,7 +37,13 @@
   gap: 20px;
   align-items: center;
 }
-.fits_box {
-  color: grey;
-  font-size: 17px;
+
+.cart_comp_last {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+.cart_comp_last > div:nth-child(1) {
+  font-weight: 500;
 }
