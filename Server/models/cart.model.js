@@ -24,7 +24,11 @@ const cartSchema = mongoose.Schema({
   multipack: Boolean,
   newProduct: Boolean,
   authorID: String,
-  img: String,
+  img: {
+    type: String,
+    default:
+      "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png",
+  },
   quantity: { type: Number, default: 1 },
 });
 

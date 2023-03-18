@@ -8,10 +8,17 @@ export const Cartcard = ({ img, name, whitePrice }) => {
         <Image src={img} />
       </div>
       <div>
-        <Text>{name}</Text>
-        <Text>{`Rs. ${whitePrice.price}`}</Text>
-        
+        <Text fontSize={"xl"} fontWeight="500">
+          {name}
+        </Text>
+        <Text fontWeight={"600"}>{`Rs. ${whitePrice.price}`}</Text>
+        <div className="articleCode">
+          Text
+        </div>
       </div>
     </div>
   );
 };
+/**
+ * 
+ */

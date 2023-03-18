@@ -1,5 +1,5 @@
 .cart_container {
-  width: 80%;
+  width: 70%;
   margin: auto;
   margin-top: 20px;
 }
@@ -21,6 +21,7 @@
 }
 .details_box {
   flex: 2;
+  background-color: #fff;
 }
 .checkout_box {
   flex: 1;

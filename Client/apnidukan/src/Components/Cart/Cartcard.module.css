@@ -1,9 +1,19 @@
 .cart_card {
   display: flex;
+  padding: 10px;
 }
 .cart_card > div:nth-child(1) {
   flex: 1;
 }
 .cart_card > div:nth-child(2) {
-  flex: 2;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.cart_card img {
+  width: 50%;
+  margin: auto;
+  object-fit: contain;
 }
