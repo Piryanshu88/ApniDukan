@@ -1,6 +1,8 @@
 .cart_card {
   display: flex;
   padding: 10px;
+  align-items: center;
+  position: relative;
 }
 .cart_card > div:nth-child(1) {
   flex: 1;
@@ -16,4 +18,26 @@
   width: 50%;
   margin: auto;
   object-fit: contain;
+}
+.delete_btn {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  margin: 10px;
+}
+.delete_btn:hover {
+  color: red;
+}
+.articleCode {
+  display: flex;
+  margin-top: 10px;
+  color: gray;
+  font-size: 13px;
+  gap: 20px;
+  align-items: center;
+}
+.fits_box {
+  color: grey;
+  font-size: 17px;
 }

@@ -1,7 +1,8 @@
 import { Image, Text } from "@chakra-ui/react";
 import React from "react";
 import styles from "./Cartcard.module.css";
-export const Cartcard = ({ img, name, whitePrice }) => {
+import { RiDeleteBin5Line } from "react-icons/ri";
+export const Cartcard = ({ code, img, name, whitePrice, fits }) => {
   return (
     <div className={styles.cart_card}>
       <div>
@@ -12,13 +13,27 @@ export const Cartcard = ({ img, name, whitePrice }) => {
           {name}
         </Text>
         <Text fontWeight={"600"}>{`Rs. ${whitePrice.price}`}</Text>
-        <div className="articleCode">
-          Text
+        <div className={styles.articleCode}>
+          <Text>Art.no. </Text>
+          <Text>:</Text>
+          <Text> {code}</Text>
+        </div>
+        <div className={styles.articleCode}>
+          <Text>Size</Text>
+          <Text>:</Text>
+          <Text>OneSize</Text>
+        </div>
+        <div className={styles.fits_box}>
+          {fits?.map((el) => {
+            return <Text>{el}</Text>;
+          })}
         </div>
       </div>
+
+      <RiDeleteBin5Line className={styles.delete_btn} fontSize={"20px"} />
     </div>
   );
 };
 /**
- * 
+ *
  */
