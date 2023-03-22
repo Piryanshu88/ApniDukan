@@ -2,6 +2,8 @@ import { Text, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  delDataErr,
+  delDataSuccess,
   DeleteCartData,
   getCartData,
   getDataError,
@@ -15,17 +17,28 @@ export const CardComp = () => {
     (store) => store.cartReducer
   );
   const toast = useToast();
-  const handleDelete = (id) => {
+  const handleDeleteCartData = (id) => {
     dispatch(DeleteCartData(id))
       .then((re) => {
+        dispatch(delDataSuccess());
         toast({
           title: "Remove item from cart Successfully",
           status: "success",
           duration: 2000,
           isClosable: true,
         });
+        dispatch(getCartData())
+          .then((re) => {
+            console.log(re.data);
+            dispatch(getDataSuccess(re.data));
+          })
+          .catch((err) => {
+            console.log(err.message);
+            dispatch(getDataError());
+          });
       })
       .catch((err) => {
+        dispatch(delDataErr());
         console.log(err);
         toast({
           title: "Try Again, Something went wrong",
@@ -62,7 +75,9 @@ export const CardComp = () => {
       <div className={styles.cart_box}>
         <div className={styles.details_box}>
           {carts?.map((el, i) => {
-            return <Cartcard key={i} {...el} handleDelete={handleDelete} />;
+            return (
+              <Cartcard key={i} {...el} handleDelete={handleDeleteCartData} />
+            );
           })}
         </div>
         <div className={styles.checkout_box}></div>
