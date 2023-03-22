@@ -16,13 +16,37 @@
   margin-top: 10px;
   gap: 10px;
 }
-.cart_box > div {
-  border: 1px solid teal;
-}
+
 .details_box {
   flex: 2;
   background-color: #fff;
 }
 .checkout_box {
   flex: 1;
+  background-color: #fff;
+  color: #222222;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 10px 20px;
+  line-height: 2.4rem;
+}
+.checkout_box > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.discount_box {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+  gap: 10px;
+}
+.total_value {
+  border-top: 2px solid;
+  margin-top: 8px;
+  padding-top: 8px;
 }

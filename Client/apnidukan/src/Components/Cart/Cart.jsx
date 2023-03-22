@@ -1,4 +1,4 @@
-import { Text, useDisclosure, useToast } from "@chakra-ui/react";
+import { Button, Input, Text, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -80,7 +80,44 @@ export const CardComp = () => {
             );
           })}
         </div>
-        <div className={styles.checkout_box}></div>
+        <div className={styles.checkout_box}>
+          <Text>Add a discount code</Text>
+          <div className={styles.discount_box}>
+            <Input
+              placeholder="Add Code"
+              focusBorderColor="green.400"
+              borderRadius={"0"}
+            />
+            <Button
+              borderRadius={"0"}
+              colorScheme="blackAlpha"
+              background={"#000"}
+            >
+              Add
+            </Button>
+          </div>
+          <div>
+            <Text>Order value</Text>
+            <Text>Rs. 999</Text>
+          </div>
+          <div>
+            <Text>Discount</Text>
+            <Text>Rs. 100</Text>
+          </div>
+          <div>
+            <Text>Delivery</Text>
+            <Text>FREE</Text>
+          </div>
+
+          <div className={styles.total_value}>
+            <Text fontSize={"18px"} fontWeight="500">
+              Total value
+            </Text>
+            <Text fontSize={"18px"} fontWeight="500">
+              Rs. 899
+            </Text>
+          </div>
+        </div>
       </div>
     </div>
   );
