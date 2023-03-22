@@ -165,7 +165,7 @@ export const SingleProComp = () => {
     );
     setTimeout(() => {
       setLoading(false);
-    }, 4000);
+    }, 3000);
     console.log(products);
   }, [articleCode, isAuth]);
 

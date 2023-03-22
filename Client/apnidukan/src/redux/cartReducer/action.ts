@@ -50,7 +50,6 @@ export const AddDataErr = () => {
   };
 };
 
-
 const getCartData = () => (dispatch: any) => {
   dispatch(getDataReq());
   return axios.get("https://rich-erin-walkingstick-hem.cyclic.app/cart", {
@@ -60,7 +59,17 @@ const getCartData = () => (dispatch: any) => {
   });
 };
 
-
+const DeleteCartData = (p: string) => (dispatch: any) => {
+  dispatch(delDataReq());
+  return axios.delete(
+    `https://rich-erin-walkingstick-hem.cyclic.app/cart/delete/${p}`,
+    {
+      headers: {
+        Authorization: loadData("hm_token"),
+      },
+    }
+  );
+};
 
 const addCartData = (payload: any) => (disptach: any) => {
   disptach(AddDataReq());
@@ -75,4 +84,4 @@ const addCartData = (payload: any) => (disptach: any) => {
   );
 };
 
-export { getCartData, addCartData };
+export { getCartData, addCartData, DeleteCartData };
