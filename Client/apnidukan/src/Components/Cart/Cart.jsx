@@ -16,6 +16,7 @@ export const CardComp = () => {
   const { isLoading, isError, carts } = useSelector(
     (store) => store.cartReducer
   );
+  
   const toast = useToast();
   const handleDeleteCartData = (id) => {
     dispatch(DeleteCartData(id))
