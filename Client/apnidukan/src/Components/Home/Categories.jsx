@@ -14,6 +14,7 @@ import hoodie from "../../assets/categories/10231.png";
 import newsr from "../../assets/categories/10245.png";
 import pres from "../../assets/categories/10252.png";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const PreviousBtn = (props) => {
   const { className, onClick } = props;
@@ -127,17 +128,19 @@ export const Categories = () => {
     <div>
       <Slider {...settings}>
         {categories?.map((item, i) => (
-          <Box m="5px" alignItems="center" textAlign={"center"} key={i}>
-            <Image
-              m="auto"
-              _hover={{ transform: "scale(1.1)", transition: "400ms" }}
-              p="10px"
-              src={item.img}
-              alt=""
-            />
-            <Text fontWeight="500"> {item.item}</Text>
-            <Text>{item.name} </Text>
-          </Box>
+          <Link to="/category/mens">
+            <Box m="5px" alignItems="center" textAlign={"center"} key={i}>
+              <Image
+                m="auto"
+                _hover={{ transform: "scale(1.1)", transition: "400ms" }}
+                p="10px"
+                src={item.img}
+                alt={item.name}
+              />
+              <Text fontWeight="500"> {item.item}</Text>
+              <Text>{item.name} </Text>
+            </Box>
+          </Link>
         ))}
       </Slider>
     </div>

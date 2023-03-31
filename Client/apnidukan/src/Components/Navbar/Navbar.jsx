@@ -652,10 +652,12 @@ export const Navbar = () => {
                 </Modal>
               </>
             )}
-            <Flex alignItems={"center"}>
-              <CiHeart fontSize={"24px"} />
-              <Text className={styles.navbar_box_1_text}>Favourites</Text>
-            </Flex>
+            <Link to="/favourite">
+              <Flex alignItems={"center"}>
+                <CiHeart fontSize={"24px"} />
+                <Text className={styles.navbar_box_1_text}>Favourites</Text>
+              </Flex>
+            </Link>
             <Flex alignItems={"center"} className={styles.mobile_search}>
               <CiSearch fontSize={"24px"} />
             </Flex>
