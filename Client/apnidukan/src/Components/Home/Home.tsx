@@ -9,6 +9,7 @@ import axios, { AxiosResponse } from "axios";
 import { Data, ProDucts } from "../../constants";
 import { Scroller } from "./Categories/Scroller";
 import { Mazagines } from "./Mazagines";
+import { Link } from "react-router-dom";
 //C:\Users\Piryanshu\Desktop\ApniDukan\Client\apnidukan\src\assets\f_home.png
 
 const getData = async (str: string) => {
@@ -53,15 +54,17 @@ export const HomeComp = () => {
             The new collection is out now
           </Text>
           <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
-            <Button
-              borderRadius={"0"}
-              color="var(--text-color)"
-              padding={"8px"}
-              fontSize="14px"
-              margin={"0"}
-            >
-              Shop Now{" "}
-            </Button>
+            <Link to="/category/ladies">
+              <Button
+                borderRadius={"0"}
+                color="var(--text-color)"
+                padding={"8px"}
+                fontSize="14px"
+                margin={"0"}
+              >
+                Shop Now{" "}
+              </Button>
+            </Link>
             <Button
               borderRadius={"0"}
               color="var(--text-color)"
@@ -90,15 +93,17 @@ export const HomeComp = () => {
             The new collection is out now
           </Text>
           <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
-            <Button
-              borderRadius={"0"}
-              color="var(--text-color)"
-              padding={"8px"}
-              fontSize="14px"
-              margin={"0"}
-            >
-              Shop Now{" "}
-            </Button>
+            <Link to="/category/ladies">
+              <Button
+                borderRadius={"0"}
+                color="var(--text-color)"
+                padding={"8px"}
+                fontSize="14px"
+                margin={"0"}
+              >
+                Shop Now{" "}
+              </Button>
+            </Link>
           </Flex>
         </div>
       </div>
@@ -117,15 +122,17 @@ export const HomeComp = () => {
         <div>
           {" "}
           <Flex justifyContent={"center"} gap="10px" marginBottom={"20px"}>
-            <Button
-              borderRadius={"0"}
-              color="var(--text-color)"
-              padding={"8px"}
-              fontSize="14px"
-              margin={"0"}
-            >
-              Shop Now{" "}
-            </Button>
+            <Link to="/category/sports">
+              <Button
+                borderRadius={"0"}
+                color="var(--text-color)"
+                padding={"8px"}
+                fontSize="14px"
+                margin={"0"}
+              >
+                Shop Now{" "}
+              </Button>
+            </Link>
           </Flex>
         </div>
       </div>
@@ -276,24 +283,28 @@ export const HomeComp = () => {
             any day
           </Text>
           <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
-            <Button
-              borderRadius={"0"}
-              color="var(--text-color)"
-              padding={"8px"}
-              fontSize="14px"
-              margin={"0"}
-            >
-              Men
-            </Button>
-            <Button
-              borderRadius={"0"}
-              color="var(--text-color)"
-              padding={"8px"}
-              fontSize="14px"
-              margin={"0"}
-            >
-              Women
-            </Button>
+            <Link to="/category/sports">
+              <Button
+                borderRadius={"0"}
+                color="var(--text-color)"
+                padding={"8px"}
+                fontSize="14px"
+                margin={"0"}
+              >
+                Men
+              </Button>
+            </Link>
+            <Link to="/category/sports">
+              <Button
+                borderRadius={"0"}
+                color="var(--text-color)"
+                padding={"8px"}
+                fontSize="14px"
+                margin={"0"}
+              >
+                Women
+              </Button>
+            </Link>
           </Flex>
         </div>
       </div>
@@ -312,15 +323,17 @@ export const HomeComp = () => {
             Current crush: Colours!
           </Text>
           <Flex justifyContent={"center"} gap="10px" marginBottom={"40px"}>
-            <Button
-              borderRadius={"0"}
-              color="var(--text-color)"
-              padding={"8px"}
-              fontSize="14px"
-              margin={"0"}
-            >
-              Shop Now
-            </Button>
+            <Link to="/category/home">
+              <Button
+                borderRadius={"0"}
+                color="var(--text-color)"
+                padding={"8px"}
+                fontSize="14px"
+                margin={"0"}
+              >
+                Shop Now
+              </Button>
+            </Link>
           </Flex>
         </div>
       </div>
