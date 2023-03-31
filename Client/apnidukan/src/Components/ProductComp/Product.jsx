@@ -1,4 +1,13 @@
-import { Box, Button, Image, Skeleton, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Image,
+  Skeleton,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import {
   Menu,
@@ -19,8 +28,14 @@ import {
   getDataSuccess,
 } from "../../redux/dataReducer/action";
 import styles from "./Product.module.css";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import {
+  ArrowBackIcon,
+  ArrowForwardIcon,
+  ChevronDownIcon,
+  PhoneIcon,
+} from "@chakra-ui/icons";
 import { ProductCard } from "./ProductCard/ProductCard";
+import axios from "axios";
 export const Product = () => {
   const { category } = useParams();
   const dispatch = useDispatch();
@@ -29,11 +44,12 @@ export const Product = () => {
   const { isError, products, totalCount } = useSelector(
     (store) => store.dataReducer
   );
+  const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     setSearchParams({ sort: sort });
-    console.log("use", sort);
+
     setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -61,7 +77,17 @@ export const Product = () => {
       background: "var(--bg-color)",
     };
   };
-
+  const handlePage = (v) => {
+    setPage(page + v);
+    axios
+      .get(
+        `https://rich-erin-walkingstick-hem.cyclic.app/products/${category}?page=${
+          page + v
+        }`
+      )
+      .then((re) => dispatch(getDataSuccess(re.data)))
+      .catch((err) => dispatch(getDataError()));
+  };
   if (isError) {
     return (
       <Box>
@@ -114,10 +140,28 @@ export const Product = () => {
             </MenuItem>
           </MenuList>
         </Menu>
-        <div>
-          <Text>{totalCount} items</Text>
-          <AiOutlineAppstore fontSize={"19px"} />
-        </div>
+        <Flex>
+          <Flex gap={"4px"} alignItems="center" justifyContent={"center"}>
+            <IconButton
+              colorScheme="red"
+              isDisabled={page == 0}
+              variant={"ghost"}
+              icon={<ArrowBackIcon />}
+              onClick={() => handlePage(-1)}
+            />
+            <Text>{page + 1}</Text>
+            <IconButton
+              colorScheme="red"
+              variant={"ghost"}
+              onClick={() => handlePage(1)}
+              icon={<ArrowForwardIcon />}
+            />
+          </Flex>
+          <Flex gap={"4px"} alignItems="center">
+            <Text>{totalCount} items</Text>
+            <AiOutlineAppstore fontSize={"19px"} />
+          </Flex>
+        </Flex>
       </div>
       <div className={styles.products_card_box}>
         {products?.map((el, i) => {
