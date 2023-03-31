@@ -330,6 +330,7 @@ export const HomeComp = () => {
                 padding={"8px"}
                 fontSize="14px"
                 margin={"0"}
+                
               >
                 Shop Now
               </Button>
