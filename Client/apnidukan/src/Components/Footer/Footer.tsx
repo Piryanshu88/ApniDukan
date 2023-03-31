@@ -9,6 +9,7 @@ import {
   Flex,
   Tag,
   useColorModeValue,
+  Image,
 } from "@chakra-ui/react";
 
 const ListHeader = ({ children }: { children: ReactNode }) => {
@@ -21,6 +22,13 @@ const ListHeader = ({ children }: { children: ReactNode }) => {
 export const FooterC = () => {
   return (
     <Box bg={"#E4E4E4"} color={useColorModeValue("gray.700", "gray.200")}>
+      <Image
+        src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=14&duration=4000&pause=1000&color=444444&background=FFFFFF00&width=220&height=31&lines=Made+with+🧡+by+Piryanshu"
+        alt="Typing SVG"
+        // style={{ margin: "auto" }}
+        margin={"auto"}
+        paddingTop={"15px"}
+      />
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={"flex-start"}>
