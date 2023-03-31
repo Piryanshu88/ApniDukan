@@ -84,4 +84,15 @@ const addCartData = (payload: any) => (disptach: any) => {
   );
 };
 
-export { getCartData, addCartData, DeleteCartData };
+const CheckoutCart = () => {
+  return axios.delete(
+    `https://rich-erin-walkingstick-hem.cyclic.app/cart/checkout`,
+    {
+      headers: {
+        Authorization: loadData("hm_token"),
+      },
+    }
+  );
+};
+
+export { getCartData, addCartData, DeleteCartData, CheckoutCart };
