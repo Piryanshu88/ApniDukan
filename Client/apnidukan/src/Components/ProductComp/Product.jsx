@@ -1,4 +1,4 @@
-import { Button, Skeleton, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Image, Skeleton, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import {
   Menu,
@@ -63,7 +63,17 @@ export const Product = () => {
   };
 
   if (isError) {
-    return <div>Error</div>;
+    return (
+      <Box>
+        <Image
+          objectFit={"contain"}
+          width="50%"
+          margin={"auto"}
+          marginTop="20px"
+          src="https://img.freepik.com/free-vector/400-error-bad-request-concept-illustration_114360-1921.jpg?w=996&t=st=1680264699~exp=1680265299~hmac=1e25e41a7b9788ac0f17907336152ff780cec607dd867d577e96987100cb3f00"
+        />
+      </Box>
+    );
   }
   return (
     <div className={styles.products_box}>
