@@ -51,3 +51,32 @@
   margin-top: 8px;
   padding-top: 8px;
 }
+
+@media all and (min-width: 640px) and (max-width: 1024px) {
+  .cart_container {
+    width: 90%;
+  }
+  .cart_text_box {
+    width: 90%;
+  }
+}
+
+/* for mobile screens */
+@media all and (min-width: 324px) and (max-width: 640px) {
+  .cart_container {
+    width: 90%;
+  }
+  .cart_text_box {
+    width: 90%;
+  }
+  .cart_box {
+    flex-direction: column-reverse;
+  }
+  .checkout_btn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    background: var(--color-bg);
+  }
+}

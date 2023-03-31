@@ -1,7 +1,16 @@
-import { Button, Input, Text, useDisclosure, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Image,
+  Input,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   CheckoutCart,
   delDataErr,
@@ -154,6 +163,63 @@ export const CardComp = () => {
   if (isError) {
     return <div>Error</div>;
   }
+  if (carts.length == 0) {
+    return (
+      <Box>
+        <Image
+          src="https://e-commediallc.com/static/version1655842013/frontend/Magedukan/matsandrunner/en_US/images/cart-empty.png"
+          width={"50%"}
+          margin="auto"
+          marginTop={"20px"}
+          objectFit="contain"
+          height={"400px"}
+        />
+        <Heading
+          lineHeight={1.1}
+          fontWeight={600}
+          fontSize={{ base: "3xl", sm: "4xl", lg: "4xl" }}
+          display="flex"
+          justifyContent={"center"}
+          alignItems="center"
+          gap={"4px"}
+          marginTop="10px"
+        >
+          <Text
+            as={"span"}
+            position={"relative"}
+            _after={{
+              content: "''",
+              width: "full",
+              height: "30%",
+              position: "absolute",
+              bottom: 1,
+              left: 0,
+              bg: "red.400",
+              zIndex: -1,
+            }}
+          >
+            OOPs!
+          </Text>
+          <br />
+          <Text as={"span"} color={"red.400"}>
+            Your Cart is Empty
+          </Text>
+        </Heading>
+        <Link to="/">
+          <Button
+            width={"200px"}
+            marginTop="10px"
+            colorScheme={"orange"}
+            borderRadius="0"
+            marginBottom={"20px"}
+          >
+            Shop now
+          </Button>
+        </Link>
+      </Box>
+    );
+  }
+
   return (
     <div className={styles.cart_container}>
       <Text fontSize={"sm"}>HM.com/Shopping bag</Text>
@@ -213,16 +279,18 @@ export const CardComp = () => {
               Rs. {sum - 100}
             </Text>
           </div>
-          <Button
-            borderRadius={"0"}
-            colorScheme="blackAlpha"
-            background={"#000"}
-            width="100%"
-            marginTop={"15px"}
-            onClick={handleCheckout}
-          >
-            Checkout Now
-          </Button>
+          <div className={styles.checkout_btn}>
+            <Button
+              borderRadius={"0"}
+              colorScheme="blackAlpha"
+              background={"#000"}
+              width="100%"
+              marginTop={"15px"}
+              onClick={handleCheckout}
+            >
+              Checkout Now
+            </Button>
+          </div>
         </div>
       </div>
     </div>
