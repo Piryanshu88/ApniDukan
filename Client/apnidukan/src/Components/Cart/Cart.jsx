@@ -17,6 +17,8 @@ export const CardComp = () => {
     (store) => store.cartReducer
   );
   const [sum, setsum] = useState(0);
+  const [disbtn, setDisBtn] = useState(false);
+  const [discount, setDiscount] = useState("");
 
   const toast = useToast();
   const handleDeleteCartData = (id) => {
@@ -54,6 +56,56 @@ export const CardComp = () => {
         });
       });
   };
+  const handleDiscount = () => {
+    if (discount == "") {
+      toast({
+        title: `Please Add a valid Code`,
+        status: "error",
+        isClosable: true,
+        duration: 2000,
+        variant: "top-accent",
+      });
+    } else if (discount == "ENJOY100") {
+      setsum(sum - 100);
+      setDisBtn(true);
+      toast({
+        title: `Discount Applied`,
+        status: "success",
+        isClosable: true,
+        duration: 2000,
+        variant: "top-accent",
+      });
+    } else if (discount == "ENJOY500") {
+      setsum(sum - 500);
+      setDisBtn(true);
+      toast({
+        title: `Discount Applied`,
+        status: "success",
+        isClosable: true,
+        duration: 2000,
+        variant: "top-accent",
+      });
+    } else if (discount == "HM1000") {
+      setsum(sum - 1000);
+      setDisBtn(true);
+      toast({
+        title: `Discount Applied`,
+        status: "success",
+        isClosable: true,
+        duration: 2000,
+        variant: "top-accent",
+      });
+    } else {
+      toast({
+        title: `Please Add a valid Code`,
+        status: "error",
+        isClosable: true,
+        duration: 2000,
+        variant: "top-accent",
+      });
+    }
+  };
+
   useEffect(() => {
     dispatch(getCartData())
       .then((re) => {
@@ -96,13 +148,17 @@ export const CardComp = () => {
           <div className={styles.discount_box}>
             <Input
               placeholder="Add Code"
+              value={discount}
+              onChange={(e) => setDiscount(e.target.value)}
               focusBorderColor="green.400"
               borderRadius={"0"}
             />
             <Button
+              onClick={handleDiscount}
               borderRadius={"0"}
               colorScheme="blackAlpha"
               background={"#000"}
+              isDisabled={disbtn}
             >
               Add
             </Button>
