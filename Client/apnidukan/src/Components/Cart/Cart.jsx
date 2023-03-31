@@ -1,7 +1,9 @@
 import { Button, Input, Text, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
+  CheckoutCart,
   delDataErr,
   delDataSuccess,
   DeleteCartData,
@@ -19,7 +21,7 @@ export const CardComp = () => {
   const [sum, setsum] = useState(0);
   const [disbtn, setDisBtn] = useState(false);
   const [discount, setDiscount] = useState("");
-
+  const navigate = useNavigate();
   const toast = useToast();
   const handleDeleteCartData = (id) => {
     dispatch(DeleteCartData(id))
@@ -106,6 +108,33 @@ export const CardComp = () => {
     }
   };
 
+  const handleCheckout = () => {
+    CheckoutCart().then(() => {
+      dispatch(getCartData())
+        .then((re) => {
+          console.log(re.data);
+          dispatch(getDataSuccess(re.data));
+          setsum(
+            re?.data?.data?.reduce((acc, ele) => {
+              return acc + ele.whitePrice.price;
+            }, 0)
+          );
+        })
+        .catch((err) => {
+          console.log(err.message);
+          dispatch(getDataError());
+        });
+    });
+    toast({
+      title: `Thanks for giving your time`,
+      status: "success",
+      isClosable: true,
+      duration: 2000,
+      variant: "top-accent",
+    });
+    navigate("/");
+  };
+
   useEffect(() => {
     dispatch(getCartData())
       .then((re) => {
@@ -184,6 +213,16 @@ export const CardComp = () => {
               Rs. {sum - 100}
             </Text>
           </div>
+          <Button
+            borderRadius={"0"}
+            colorScheme="blackAlpha"
+            background={"#000"}
+            width="100%"
+            marginTop={"15px"}
+            onClick={handleCheckout}
+          >
+            Checkout Now
+          </Button>
         </div>
       </div>
     </div>
