@@ -1,5 +1,5 @@
 import { Button, Input, Text, useDisclosure, useToast } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   delDataErr,
@@ -16,7 +16,8 @@ export const CardComp = () => {
   const { isLoading, isError, carts } = useSelector(
     (store) => store.cartReducer
   );
-  
+  const [sum, setsum] = useState(0);
+
   const toast = useToast();
   const handleDeleteCartData = (id) => {
     dispatch(DeleteCartData(id))
@@ -30,8 +31,12 @@ export const CardComp = () => {
         });
         dispatch(getCartData())
           .then((re) => {
-            console.log(re.data);
             dispatch(getDataSuccess(re.data));
+            setsum(
+              re?.data?.data?.reduce((acc, ele) => {
+                return acc + ele.whitePrice.price;
+              }, 0)
+            );
           })
           .catch((err) => {
             console.log(err.message);
@@ -54,12 +59,17 @@ export const CardComp = () => {
       .then((re) => {
         console.log(re.data);
         dispatch(getDataSuccess(re.data));
+        setsum(
+          re?.data?.data?.reduce((acc, ele) => {
+            return acc + ele.whitePrice.price;
+          }, 0)
+        );
       })
       .catch((err) => {
         console.log(err.message);
         dispatch(getDataError());
       });
-  }, []);
+  }, [dispatch]);
   if (isError) {
     return <div>Error</div>;
   }
@@ -99,7 +109,7 @@ export const CardComp = () => {
           </div>
           <div>
             <Text>Order value</Text>
-            <Text>Rs. 999</Text>
+            <Text>Rs. {sum}</Text>
           </div>
           <div>
             <Text>Discount</Text>
@@ -115,7 +125,7 @@ export const CardComp = () => {
               Total value
             </Text>
             <Text fontSize={"18px"} fontWeight="500">
-              Rs. 899
+              Rs. {sum - 100}
             </Text>
           </div>
         </div>

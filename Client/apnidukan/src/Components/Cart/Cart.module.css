@@ -15,6 +15,7 @@
   display: flex;
   margin-top: 10px;
   gap: 10px;
+  align-items: flex-start;
 }
 
 .details_box {
