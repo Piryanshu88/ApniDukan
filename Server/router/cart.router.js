@@ -55,7 +55,18 @@ cartRouter.delete("/delete/:id", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "Failed" });
   }
 });
-
+// for checkout
+cartRouter.delete("/checkout", async (req, res) => {
+  try {
+    const cart = await CartModel.deleteMany({ authorID: req.body.authorID });
+    res
+      .status(201)
+      .json({ message: "Cart item deleted successfully", status: "Success" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong", status: "Failed" });
+  }
+});
 module.exports = {
   cartRouter,
 };
