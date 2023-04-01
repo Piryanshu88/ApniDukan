@@ -27,6 +27,7 @@ export const CardComp = () => {
   const { isLoading, isError, carts } = useSelector(
     (store) => store.cartReducer
   );
+  const { isAuth } = useSelector((store) => store.authReducer);
   const [sum, setsum] = useState(0);
   const [disbtn, setDisBtn] = useState(false);
   const [discount, setDiscount] = useState("");
@@ -161,7 +162,23 @@ export const CardComp = () => {
       });
   }, [dispatch]);
   if (isError) {
-    return <div>Error</div>;
+    return (
+      <Box>
+        <Image
+          src="https://mykit.in/public/img/images/emptycart.svg"
+          margin={"auto"}
+          marginTop="30px"
+        />
+        <Text
+          color={"orange.500"}
+          fontSize="xl"
+          marginBottom={"20px"}
+          fontWeight="600"
+        >
+          <Text as={"span"} color='#222222'>Please</Text>, login to see your Cart
+        </Text>
+      </Box>
+    );
   }
   if (carts.length == 0) {
     return (

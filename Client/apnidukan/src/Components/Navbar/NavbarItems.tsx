@@ -11,7 +11,7 @@ import {
 import styles from "./NavbarItems.module.css";
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface propsItems {
   key: string;
@@ -67,7 +67,11 @@ export const NavbarSec = ({ comp, list, onClick }: props) => {
                   {el.key}
                 </Text>
                 {el?.key_data?.map((item) => {
-                  return <Text cursor={"pointer"}>{item}</Text>;
+                  return (
+                    <Link to={`/category/${onClick}`}>
+                      <Text cursor={"pointer"}>{item}</Text>
+                    </Link>
+                  );
                 })}
               </Stack>
             );
