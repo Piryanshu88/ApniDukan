@@ -160,8 +160,8 @@ export const CardComp = () => {
         console.log(err.message);
         dispatch(getDataError());
       });
-  }, [dispatch]);
-  if (isError) {
+  }, [dispatch, isAuth]);
+  if (!isAuth) {
     return (
       <Box>
         <Image
@@ -175,7 +175,10 @@ export const CardComp = () => {
           marginBottom={"20px"}
           fontWeight="600"
         >
-          <Text as={"span"} color='#222222'>Please</Text>, login to see your Cart
+          <Text as={"span"} color="#222222">
+            Please
+          </Text>
+          , login to see your Cart
         </Text>
       </Box>
     );
