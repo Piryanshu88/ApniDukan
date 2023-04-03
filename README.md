@@ -4,13 +4,10 @@
 
 <br />
 
-
-## 📃 Table of Content 
+## 📃 Table of Content
 
 <h3 href='#tech'>🖥️ Tech Stacks </h3>
 <h3 href='#screen'>💻 Screens </h3>
-
-
 
 <h2 align="center" id='tech' >🖥️ Tech Stacks</h2>
 
@@ -86,7 +83,7 @@
     </td>
   </tr>
   <tr>
-    <td  align="center" ><img src="./ReadmeAssets/laptop.png"  alt="laptops-screen" /></td>  
+    <td  align="center" ><img src="./ReadmeAssets/laptop.png"  alt="laptops-screen" /></td> 
   </tr>
 
   <tr>
@@ -105,7 +102,6 @@
   </tr>
   <tr>
     <td  align="center"><img src="./ReadmeAssets/mobile.png"  width='30%'alt="mobile-screen" /></td>
-    <td  align="center"><img src="./ReadmeAssets/mobile.gif"  alt="mobile-screen" /></td>
   </tr>
 
   </table>
