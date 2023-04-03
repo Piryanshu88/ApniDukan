@@ -105,6 +105,7 @@
   </tr>
   <tr>
     <td  align="center"><img src="./ReadmeAssets/mobile.png"  width='30%'alt="mobile-screen" /></td>
+    <td  align="center"><img src="./ReadmeAssets/mobile.gif"  alt="mobile-screen" /></td>
   </tr>
 
   </table>
