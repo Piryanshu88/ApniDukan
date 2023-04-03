@@ -6,10 +6,13 @@
 
 ## 📃 Table of Content
 
-<h3 href='#tech'>🖥️ Tech Stacks </h3>
-<h3 href='#screen'>💻 Screens </h3>
+- | [🖥️ Tech Stacks ](#🖥️-tech-stacks)
+- | [💻 Screens ](#💻-screens)
+- | [🚀 Features ](#🚀-features)
+- | [⬇️ SnapShots for Different Screen Sizes ](#⬇️-snapshots-for-different-screen-sizes)
+- | [📞 Contact ](#📞-contact)
 
-<h2 align="center" id='tech' >🖥️ Tech Stacks</h2>
+## 🖥️ Tech Stacks
 
 <h4 align="center">Frontend:</h4>
 
@@ -51,7 +54,7 @@
 </p>
 <br />
 
-<h2>💻 Screens</h2>
+## 💻 Screens
 
 - 🏡 Homepage / Landing Page
 - 🍎 Products Page
