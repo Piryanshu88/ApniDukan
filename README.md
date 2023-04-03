@@ -4,7 +4,15 @@
 
 <br />
 
-<h2 align="center">🖥️ Tech Stacks</h2>
+
+## 📃 Table of Content 
+
+<h3 href='#tech'>🖥️ Tech Stacks </h3>
+<h3 href='#screen'>💻 Screens </h3>
+
+
+
+<h2 align="center" id='tech' >🖥️ Tech Stacks</h2>
 
 <h4 align="center">Frontend:</h4>
 
@@ -46,7 +54,7 @@
 </p>
 <br />
 
-## 💻 Screens
+<h2>💻 Screens</h2>
 
 - 🏡 Homepage / Landing Page
 - 🍎 Products Page
@@ -96,7 +104,7 @@
     </td>
   </tr>
   <tr>
-    <td  align="center"><img src="./ReadmeAssets/mobile.png"  width='0%'alt="mobile-screen" /></td>
+    <td  align="center"><img src="./ReadmeAssets/mobile.png"  width='30%'alt="mobile-screen" /></td>
   </tr>
 
   </table>
