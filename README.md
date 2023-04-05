@@ -9,7 +9,7 @@
 - | **[🖥️ Tech Stacks ](#🖥️-tech-stacks)**
 - | **[💻 Screens ](#💻-screens)**
 - | **[🚀 Features ](#🚀-features)**
-- | **[SnapShots for Different Screen Sizes ](#⬇️-snapshots-for-different-screen-sizes)**
+- | **[SnapShots for Different Screen Sizes ](#snapshots-for-different-screen-sizes)**
 - | **[Contact ](#contact)**
 - | [What is React?](#what-is-react) 
 
