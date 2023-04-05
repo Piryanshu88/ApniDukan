@@ -14,6 +14,7 @@
 - | **[Features ](#features)**
 - | **[SnapShots for Different Screen Sizes ](#snapshots-for-different-screen-sizes)**
 - | **[SnapShots of Website](#snapShots-of-website)**
+- | **[Contributing ](#contributing)**
 - | **[Contact ](#contact)**
 
 ## Installation
@@ -25,14 +26,11 @@ To install the project on your local machine, please follow these steps:
 3. Install the necessary dependencies: `npm i`
 4. Start the development server: `npm start`
 
-
 ## Usage
 
 Once you have installed the project and started the development server, you can view the website at http://localhost:3000/.
 
 The website is a clone of the official H&M website, so you can browse through the different sections and products just like you would on the real website.
-
-
 
 ## Tech Stacks
 
@@ -147,6 +145,19 @@ The website is a clone of the official H&M website, so you can browse through th
     <td  align="center"><img src="./ReadmeAssets/footer.png"  alt="mobile-screen" /></td>
   </tr>
 </table>
+
+## Contributing
+
+We welcome contributions from anyone interested in improving this project. If you would like to contribute, please follow these steps:
+
+-- Fork the repository
+
+1. Create a new branch: git checkout -b my-feature-branch
+2. Make your changes and commit them: git commit -m 'Add some feature'
+3. Push to the branch: git push origin my-feature-branch
+4. Submit a pull request
+
+We will review your contribution and merge it if it meets our standards. Thank you for your interest in contributing to this project!
 
 ## Contact
 
