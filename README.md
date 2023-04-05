@@ -6,14 +6,14 @@
 
 ## 📃 Table of Content
 
-- | **[🖥️ Tech Stacks ](#🖥️-tech-stacks)**
-- | **[💻 Screens ](#💻-screens)**
-- | **[🚀 Features ](#🚀-features)**
+- | **[Tech Stacks ](#tech-stacks)**
+- | **[Screens ](#screens)**
+- | **[Features ](#features)**
 - | **[SnapShots for Different Screen Sizes ](#snapshots-for-different-screen-sizes)**
+- | **[SnapShots of Website](#snapShots-of-website)**
 - | **[Contact ](#contact)**
-- | [What is React?](#what-is-react) 
 
-## 🖥️ Tech Stacks
+## Tech Stacks
 
 <h4 align="center">Frontend:</h4>
 
@@ -56,8 +56,7 @@
 <br />
 
 
-1.  ### What is React?
-### 💻 Screens
+###  Screens
 
 - 🏡 Homepage / Landing Page
 - 🍎 Products Page
@@ -69,7 +68,7 @@
 
 <br />
 
-## 🚀 Features
+##  Features
 
 - User authentication: users can sign up and log in to the platform
 - Product browsing: customers can browse products based on category and price
@@ -80,7 +79,7 @@
 
 <br />
 
-## ⬇️ SnapShots for Different Screen Sizes :
+##  SnapShots for Different Screen Sizes :
 
 <table>
   <tr>
@@ -112,7 +111,7 @@
 
   </table>
 
-## ⬇️ SnapShots of Website
+##  SnapShots of Website
 
 <table>
   <tr>
