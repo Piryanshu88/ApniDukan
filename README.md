@@ -25,6 +25,15 @@ To install the project on your local machine, please follow these steps:
 3. Install the necessary dependencies: `npm i`
 4. Start the development server: `npm start`
 
+
+## Usage
+
+Once you have installed the project and started the development server, you can view the website at http://localhost:3000/.
+
+The website is a clone of the official H&M website, so you can browse through the different sections and products just like you would on the real website.
+
+
+
 ## Tech Stacks
 
 <h4 align="center">Frontend:</h4>
