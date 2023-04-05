@@ -8,12 +8,22 @@
 
 ## 📃 Table of Content
 
+- | **[Installation ](#installation)**
 - | **[Tech Stacks ](#tech-stacks)**
 - | **[Screens ](#screens)**
 - | **[Features ](#features)**
 - | **[SnapShots for Different Screen Sizes ](#snapshots-for-different-screen-sizes)**
 - | **[SnapShots of Website](#snapShots-of-website)**
 - | **[Contact ](#contact)**
+
+## Installation
+
+To install the project on your local machine, please follow these steps:
+
+1. Clone the repository: `git clone https://github.com/Piryanshu88/ApniDukan.git`
+2. Navigate to the project directory: `cd Client/apnidukan`
+3. Install the necessary dependencies: `npm i`
+4. Start the development server: `npm start`
 
 ## Tech Stacks
 
@@ -57,8 +67,7 @@
 </p>
 <br />
 
-
-###  Screens
+### Screens
 
 - 🏡 Homepage / Landing Page
 - 🍎 Products Page
@@ -70,7 +79,7 @@
 
 <br />
 
-##  Features
+## Features
 
 - User authentication: users can sign up and log in to the platform
 - Product browsing: customers can browse products based on category and price
@@ -81,7 +90,7 @@
 
 <br />
 
-##  SnapShots for Different Screen Sizes :
+## SnapShots for Different Screen Sizes :
 
 <table>
   <tr>
@@ -113,7 +122,7 @@
 
   </table>
 
-##  SnapShots of Website
+## SnapShots of Website
 
 <table>
   <tr>
