@@ -129,7 +129,7 @@
   </tr>
 </table>
 
-## 📞 Contact
+## Contact
 
 If you want to contact me, you can reach me through below handles. <br />
 [![linkedin](https://img.shields.io/badge/Piryanshu_Bisht-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/piryanshu-bisht-ba1a22231/)
