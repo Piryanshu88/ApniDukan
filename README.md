@@ -12,7 +12,7 @@
 - | **[Tech Stacks ](#tech-stacks)**
 - | **[Screens ](#screens)**
 - | **[Features ](#features)**
-- | **[SnapShots for Different Screen Sizes ](#snapshots-for-different-screen-sizes)**
+- | **[SnapShots for Different Screen Sizes ](#snapShots-for-different-screen-sizes)**
 - | **[SnapShots of Website](#snapShots-of-website)**
 - | **[Contributing ](#contributing)**
 - | **[Contact ](#contact)**
