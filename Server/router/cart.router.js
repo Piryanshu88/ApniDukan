@@ -69,6 +69,50 @@ const cartRouter = express.Router();
  *  description: All the API routes related to Cart
  */
 
+/**
+ * @swagger
+ * /cart:
+ *    get:
+ *      summary: get cart data
+ *      tags: [Cart]
+ *      requestBody:
+ *        required: true
+ *        description: token is needed (pass it in headers as Authorization)
+ *        content:
+ *          application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  Authorization:
+ *                    description: token
+ *      responses:
+ *        200:
+ *          description: getting cart data successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  data:
+ *                    type: object
+ *                    $ref: '#/components/schemas/Cart'
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 cartRouter.get("/", async (req, res) => {
   try {
     const cart = await CartModel.find({ authorID: req.body.authorID });
