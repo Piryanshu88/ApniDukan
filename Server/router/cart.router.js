@@ -292,6 +292,51 @@ cartRouter.delete("/delete/:id", async (req, res) => {
   }
 });
 // for checkout
+
+/**
+ * @swagger
+ * /cart/checkout:
+ *    delete:
+ *      summary: delete cart products by id
+ *      tags: [Cart]
+ *      requestBody:
+ *        required: true
+ *        description: token is needed (pass it in headers as Authorization)
+ *        content:
+ *          application/json:
+ *            schema:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  Authorization:
+ *                    description: token
+ *      responses:
+ *        200:
+ *          description: Checkout Successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 cartRouter.delete("/checkout", async (req, res) => {
   try {
     const cart = await CartModel.deleteMany({ authorID: req.body.authorID });
