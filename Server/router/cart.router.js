@@ -132,7 +132,7 @@ cartRouter.get("/", async (req, res) => {
  * @swagger
  * /cart/add:
  *    post:
- *      summary: Add product to cart
+ *      summary: add product to cart
  *      tags: [Cart]
  *      requestBody:
  *        required: true
@@ -297,7 +297,7 @@ cartRouter.delete("/delete/:id", async (req, res) => {
  * @swagger
  * /cart/checkout:
  *    delete:
- *      summary: delete cart products by id
+ *      summary: delete all cart of the login user
  *      tags: [Cart]
  *      requestBody:
  *        required: true
