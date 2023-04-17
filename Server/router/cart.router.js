@@ -239,6 +239,46 @@ cartRouter.patch("/update/:id", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /cart/delete/{id}:
+ *    delete:
+ *      summary: delete cart products by id
+ *      tags: [Cart]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      responses:
+ *        200:
+ *          description: Cart deleted Successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 cartRouter.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
   try {
