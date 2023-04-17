@@ -128,6 +128,45 @@ cartRouter.get("/", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /cart/add:
+ *    post:
+ *      summary: Add product to cart
+ *      tags: [Cart]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Cart'
+ *      responses:
+ *        200:
+ *          description: Added to Cart Successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 cartRouter.post("/add", async (req, res) => {
   try {
     const cart = new CartModel(req.body);
