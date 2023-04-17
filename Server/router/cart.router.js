@@ -2,6 +2,73 @@ const express = require("express");
 const { CartModel } = require("../models/cart.model");
 const cartRouter = express.Router();
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Cart:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *          description: The auto-generated id of the product
+ *        code:
+ *          type: string
+ *          description: A unique code of the product
+ *        description:
+ *          type: string
+ *          description: flipkart url for the product
+ *        name:
+ *          type: string
+ *          description: name of the product
+ *        sapProductName:
+ *          type: string
+ *        color:
+ *          type: object
+ *          description: different color options for a product
+ *        whitePrice:
+ *          type: object
+ *        importedBy:
+ *          type: string
+ *        importedDate:
+ *          type: string
+ *        netQuantity:
+ *          type: string
+ *        countryOfProduction:
+ *          type: string
+ *        productTypeName:
+ *          type: string
+ *        fits:
+ *          type: string
+ *        constructionDescr:
+ *          type: string
+ *        customerGroup:
+ *          type: string
+ *        rootCategoryPath:
+ *          type: string
+ *        productKey:
+ *          type: string
+ *        productCountryOfProduction:
+ *          type: string
+ *        yearOfProduction:
+ *          type: string
+ *        showGarmentsInfo:
+ *          type: boolean
+ *        authorID:
+ *            type: string
+ *            description: id of the user who add this product in the cart
+ *        quantity:
+ *            type: integer
+ *            description: default quantity will be 1
+ */
+
+/**
+ * @swagger
+ * tags:
+ *  name: Cart
+ *  description: All the API routes related to Cart
+ */
+
 cartRouter.get("/", async (req, res) => {
   try {
     const cart = await CartModel.find({ authorID: req.body.authorID });
