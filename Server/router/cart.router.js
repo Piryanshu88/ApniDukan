@@ -180,6 +180,52 @@ cartRouter.post("/add", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /cart/update/{id}:
+ *    patch:
+ *      summary: update cart product by id
+ *      tags: [Cart]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      requestBody:
+ *        required: false
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Cart'
+ *      responses:
+ *        200:
+ *          description: Cart Updated Successfully
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 cartRouter.patch("/update/:id", async (req, res) => {
   const { id } = req.params;
   try {
