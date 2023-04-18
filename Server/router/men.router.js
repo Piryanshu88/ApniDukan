@@ -306,6 +306,46 @@ menRouter.get("/mens", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /products/mens/{id}:
+ *    get:
+ *      summary: get product by its id
+ *      tags: [Men]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      responses:
+ *        200:
+ *          description: Getting data by ID
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  data:
+ *                    $ref: '#/components/schemas/Men'
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 menRouter.get("/mens/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -316,6 +356,45 @@ menRouter.get("/mens/:id", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "error" });
   }
 });
+
+/**
+ * @swagger
+ * /products/mens/add:
+ *    post:
+ *      summary: add products
+ *      tags: [Men]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Men'
+ *      responses:
+ *        200:
+ *          description: Data added Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 menRouter.post("/mens/add", async (req, res) => {
   try {
