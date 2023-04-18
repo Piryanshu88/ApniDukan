@@ -6,7 +6,7 @@ const DividendRouter = express.Router();
  * @swagger
  * components:
  *  schemas:
- *    Cart:
+ *    Dividend:
  *      type: object
  *      properties:
  *        _id:
@@ -32,7 +32,7 @@ const DividendRouter = express.Router();
  *          description: category of the product
  *        price:
  *          type: integer
- *          description: price of the product 
+ *          description: price of the product
  *        sellingAttribute:
  *          type: string
  *        swatchesTotal:
@@ -57,6 +57,63 @@ const DividendRouter = express.Router();
  * tags:
  *  name: Dividend
  *  description: All the API routes related to Dividend Products
+ */
+
+/**
+ * @swagger
+ * /products/dividend?q={query}:
+ *    get:
+ *      summary: get product by its id
+ *      tags: [Dividend]
+ *      parameters:
+ *        - in: path
+ *          name: q
+ *          description: search products by this query
+ *          schema:
+ *            type: string
+ *        - in: path
+ *          name: limit
+ *          required: false
+ *          description: To limit the number of product (by default its 15)
+ *          schema:
+ *            type: integer
+ *        - in: path
+ *          name: page
+ *          required: false
+ *          description: page number  (by default its 0)
+ *          schema:
+ *            type: integer
+ *        - in: path
+ *          name: sortby
+ *          required: false
+ *          description: sort products by it price ( you can use 'asc' or 'desc' )
+ *          schema:
+ *            type: string
+ *      responses:
+ *        200:
+ *          description: Getting data by search
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  data:
+ *                    $ref: '#/components/schemas/Dividend'
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
  */
 
 DividendRouter.get("/dividend", async (req, res) => {
