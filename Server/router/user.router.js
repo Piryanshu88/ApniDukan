@@ -30,9 +30,57 @@ const { UserModel } = require("../models/user.model");
  *           type: string
  */
 
+/**
+ * @swagger
+ * tags:
+ *  name: User
+ *  description: All the API routes related to User
+ */
+
 userRouter.get("/", (req, res) => {
   res.send("user login");
 });
+
+/**
+ * @swagger
+ * /user/register:
+ *    post:
+ *      summary: To register the details of a new user
+ *      tags: [User]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/User'
+ *      responses:
+ *        200:
+ *          description: The user was successfully registered
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                    description: User register successfully
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                    description: User register successfully
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 userRouter.post("/register", async (req, res) => {
   const { firstName, lastName, email, password, gender } = req.body;
