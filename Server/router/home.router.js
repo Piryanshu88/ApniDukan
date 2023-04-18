@@ -59,6 +59,65 @@ const homeRouter = express.Router();
  *  description: All the API routes  related to Home Care Products
  */
 
+/**
+ * @swagger
+ * /products/home?q={query}:
+ *    get:
+ *      summary: get products
+ *      tags: [Home]
+ *      parameters:
+ *        - in: path
+ *          name: q
+ *          description: search products by this query
+ *          schema:
+ *            type: string
+ *        - in: path
+ *          name: limit
+ *          required: false
+ *          description: To limit the number of product (by default its 15)
+ *          schema:
+ *            type: integer
+ *        - in: path
+ *          name: page
+ *          required: false
+ *          description: page number  (by default its 0)
+ *          schema:
+ *            type: integer
+ *        - in: path
+ *          name: sortby
+ *          required: false
+ *          description: sort products by it price ( you can use 'asc' or 'desc' )
+ *          schema:
+ *            type: string
+ *      responses:
+ *        200:
+ *          description: Getting data by search
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  data:
+ *                    $ref: '#/components/schemas/home'
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *                  totalCount:
+ *                    type: string
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 homeRouter.get("/home", async (req, res) => {
   const category = req?.query?.category;
   const page = Math.max(0, req?.query?.page || 0);
