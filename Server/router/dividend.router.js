@@ -63,7 +63,7 @@ const DividendRouter = express.Router();
  * @swagger
  * /products/dividend?q={query}:
  *    get:
- *      summary: get product by its id
+ *      summary: get products
  *      tags: [Dividend]
  *      parameters:
  *        - in: path
@@ -102,6 +102,8 @@ const DividendRouter = express.Router();
  *                  status:
  *                    type: string
  *                    description: Success
+ *                  totalCount:
+ *                    type: string
  *        500:
  *          description: Something went wrong
  *          content:
@@ -303,6 +305,46 @@ DividendRouter.get("/dividend", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /products/dividend/{id}:
+ *    get:
+ *      summary: get product by its id
+ *      tags: [Dividend]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      responses:
+ *        200:
+ *          description: Getting data by ID
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  data:
+ *                    $ref: '#/components/schemas/Dividend'
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 DividendRouter.get("/dividend/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -313,6 +355,45 @@ DividendRouter.get("/dividend/:id", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "error" });
   }
 });
+
+/**
+ * @swagger
+ * /products/dividend/add:
+ *    post:
+ *      summary: add products
+ *      tags: [Dividend]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Dividend'
+ *      responses:
+ *        200:
+ *          description: Data added Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 DividendRouter.post("/dividend/add", async (req, res) => {
   try {
@@ -326,6 +407,52 @@ DividendRouter.post("/dividend/add", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "error" });
   }
 });
+
+/**
+ * @swagger
+ * /products/dividend/{id}:
+ *    patch:
+ *      summary: update product by id
+ *      tags: [Dividend]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      requestBody:
+ *        required: false
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Dividend'
+ *      responses:
+ *        200:
+ *          description: Data Updated Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 DividendRouter.patch("/dividend/:id", async (req, res) => {
   const { id } = req.params;
