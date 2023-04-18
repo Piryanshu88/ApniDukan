@@ -354,6 +354,45 @@ kidRouter.get("/kids/:id", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /products/kids/add:
+ *    post:
+ *      summary: add products
+ *      tags: [Kids]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Kids'
+ *      responses:
+ *        200:
+ *          description: Data added Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 kidRouter.post("/kids/add", async (req, res) => {
   try {
     const product = new KidModel(req.body);
@@ -366,6 +405,52 @@ kidRouter.post("/kids/add", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "error" });
   }
 });
+
+/**
+ * @swagger
+ * /products/kids/{id}:
+ *    patch:
+ *      summary: update product by id
+ *      tags: [Kids]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      requestBody:
+ *        required: false
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Kids'
+ *      responses:
+ *        200:
+ *          description: Data Updated Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 kidRouter.patch("/kids/:id", async (req, res) => {
   const { id } = req.params;
