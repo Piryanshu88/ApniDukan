@@ -4,6 +4,32 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../models/user.model");
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    User:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *          description: The auto-generated id of the user
+ *        firstName:
+ *          type: string
+ *          description: The first name of user
+ *        lastName:
+ *          type: string
+ *          description: The last name of user
+ *        email:
+ *          type: string
+ *          description: The user email
+ *        gender:
+ *           type: string
+ *           description: gender of the user
+ *        password:
+ *           type: string
+ */
+
 userRouter.get("/", (req, res) => {
   res.send("user login");
 });
