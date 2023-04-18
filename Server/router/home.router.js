@@ -98,7 +98,7 @@ const homeRouter = express.Router();
  *                type: object
  *                properties:
  *                  data:
- *                    $ref: '#/components/schemas/home'
+ *                    $ref: '#/components/schemas/Home'
  *                  status:
  *                    type: string
  *                    description: Success
@@ -353,6 +353,45 @@ homeRouter.get("/home/:id", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "error" });
   }
 });
+
+/**
+ * @swagger
+ * /products/home/add:
+ *    post:
+ *      summary: add products
+ *      tags: [Home]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Home'
+ *      responses:
+ *        200:
+ *          description: Data added Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 homeRouter.post("/home/add", async (req, res) => {
   try {
