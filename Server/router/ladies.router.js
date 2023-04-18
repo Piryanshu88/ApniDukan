@@ -406,6 +406,52 @@ ladiesRouter.post("/ladies/add", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /products/ladies/{id}:
+ *    patch:
+ *      summary: update product by id
+ *      tags: [Ladies]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      requestBody:
+ *        required: false
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/Ladies'
+ *      responses:
+ *        200:
+ *          description: Data Updated Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 ladiesRouter.patch("/ladies/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -418,6 +464,46 @@ ladiesRouter.patch("/ladies/:id", async (req, res) => {
     res.status(500).json({ message: "Something went wrong", status: "error" });
   }
 });
+
+/**
+ * @swagger
+ * /products/ladies/{id}:
+ *    delete:
+ *      summary: delete product by id
+ *      tags: [Ladies]
+ *      parameters:
+ *        - in: path
+ *          name: id
+ *          required: true
+ *          description: Numeric ID of the product to retrieve.
+ *          schema:
+ *            type: integer
+ *      responses:
+ *        200:
+ *          description: Data deleted Successfuly
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
 
 ladiesRouter.delete("/ladies/:id", async (req, res) => {
   const { id } = req.params;
