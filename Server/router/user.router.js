@@ -119,6 +119,55 @@ userRouter.post("/register", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /user/login:
+ *    post:
+ *      summary: To login the existing user
+ *      tags: [User]
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *                type: object
+ *                properties:
+ *                  email:
+ *                    type: string
+ *                  password:
+ *                    type: string
+ *      responses:
+ *        200:
+ *          description: The user was successfully login
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                    description: User Login successfully
+ *                  status:
+ *                    type: string
+ *                    description: Success
+ *                  token:
+ *                    type: string
+ *                  data:
+ *                    type: object
+ *        500:
+ *          description: Something went wrong
+ *          content:
+ *            application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                  status:
+ *                    type: string
+ *                    description: Failed
+ */
+
 userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
