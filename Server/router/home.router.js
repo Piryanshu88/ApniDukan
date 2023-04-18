@@ -1,6 +1,64 @@
 const express = require("express");
 const { HomeModel } = require("../models/product.model");
 const homeRouter = express.Router();
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Home:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *          description: The auto-generated id of the product
+ *        articleCode:
+ *          type: string
+ *          description: A unique code of the product
+ *        title:
+ *          type: string
+ *          description: title of the product
+ *        favouritesNotSavedText:
+ *          type: string
+ *        favouritesSavedText:
+ *          type: string
+ *        favouritesTracking:
+ *          type: string
+ *        image:
+ *          type: array
+ *          description: Images of the product
+ *        category:
+ *          type: string
+ *          description: category of the product
+ *        price:
+ *          type: integer
+ *          description: price of the product
+ *        sellingAttribute:
+ *          type: string
+ *        swatchesTotal:
+ *          type: string
+ *        swatches:
+ *          type: array
+ *        brandName:
+ *          type: string
+ *          description: brand of the product
+ *        percentageDiscount:
+ *          type: string
+ *        redPrice:
+ *          type: string
+ *        comingSoon:
+ *          type: string
+ *        outOfStockText:
+ *          type: string
+ */
+
+/**
+ * @swagger
+ * tags:
+ *  name: Home
+ *  description: All the API routes  related to Home Care Products
+ */
+
 homeRouter.get("/home", async (req, res) => {
   const category = req?.query?.category;
   const page = Math.max(0, req?.query?.page || 0);
